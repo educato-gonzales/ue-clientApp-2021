@@ -1,0 +1,73 @@
+<h1>{{actionType}} Usuario</h1>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    
+
+    <table class="example-full-width" cellspacing="0"><tr>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Nombre">Nombre</mat-label>
+        <input matInput formControlName="nombre" placeholder="Ex. Habilitado">
+        </mat-form-field>
+        <mat-error *ngIf="nombre.invalid && formDir.submitted">
+            Nombre del usuario requerido.
+        </mat-error>
+        
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="Clave" >Clave</mat-label>
+          <input matInput type="password" formControlName="clave">
+        </mat-form-field>
+        <mat-error *ngIf="clave.invalid && formDir.submitted">
+            Clave del usuario requerido.
+        </mat-error>
+
+    </tr></table>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+
+        <td><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="Estado">Estado</mat-label>
+            <input matInput type="text" formControlName="estado" placeholder="Ex. 1" >
+        </mat-form-field>
+        <mat-error *ngIf="estado.invalid && formDir.submitted">
+            Id de Estado del usuario requerido.
+        </mat-error></td>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="Entidad">Entidad</mat-label>
+            <input matInput type="text" formControlName="entidad" placeholder="Ex. 1" >
+        </mat-form-field>
+        <mat-error *ngIf="entidad.invalid && formDir.submitted">
+            Id de Entidad del usuario requerido.
+        </mat-error>
+
+    </tr></table>
+
+
+    <table class="example-full-width" cellspacing="0"><tr>
+
+        <td><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="IdRef">Referencia</mat-label>
+            <input matInput type="number" formControlName="idRef" placeholder="Ex. 1" >
+        </mat-form-field>
+        <mat-error *ngIf="idRef.invalid && formDir.submitted">
+            Id de Referencia del usuario requerido.
+        </mat-error></td>
+           
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="idRol">
+            <mat-option value="{{ obj.id }}" *ngFor="let obj of listaSelect">{{ obj.nombre }}</mat-option>
+        </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="idRol.invalid && formDir.submitted">
+            Rol requerido
+        </mat-error>
+        
+      </tr></table>
+      
+    <div class="form-group">
+        <button type="submit" class="btn btn-success float-right">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </div><br><br><br>
+</form>

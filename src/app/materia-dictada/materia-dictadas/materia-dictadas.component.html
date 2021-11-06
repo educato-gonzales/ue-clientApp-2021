@@ -1,0 +1,78 @@
+<form  [formGroup]="form" [formGroup]="form"  #formDir="ngForm" novalidate>
+
+<!-- <p><a [routerLink]="['/addRegistroEstudiante']" class="btn btn-primary float-right mb-3">Nuevo Estudiante</a></p> -->
+<br> <br>
+<div class="form-group col-md-8">
+  <label class="control-label col-md-12" >Buscar profesor:</label>
+  <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04); width: 48%" formControlName="idProfesor" (click)="buscar(idProfesor.value)" >
+      <option value="{{ obj.id }}" *ngFor="let obj of listaSelectProfesor">{{ obj.nombres + ' ' + obj.apPaterno + ' ' + obj.apMaterno}}</option>
+  </select>
+</div>
+
+<mat-form-field appearance="standard">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Administrador" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Nº </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="idProfesor">
+        <th mat-header-cell *matHeaderCellDef> Profesor </th>
+        <td mat-cell *matCellDef="let element"> {{element.idProfesor}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="idMateria">
+      <th mat-header-cell *matHeaderCellDef> Materia </th>
+      <td mat-cell *matCellDef="let element"> {{element.idMateria}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="idCurso">
+      <th mat-header-cell *matHeaderCellDef> Curso </th>
+      <td mat-cell *matCellDef="let element"> {{element.idCurso}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="idHorario">
+      <th mat-header-cell *matHeaderCellDef> Horario </th>
+      <td mat-cell *matCellDef="let element"> {{element.idHorario}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="idPeriodo">
+      <th mat-header-cell *matHeaderCellDef> Periodo </th>
+      <td mat-cell *matCellDef="let element"> {{element.idPeriodo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+        <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+      </ng-container>
+      
+    <ng-container matColumnDef="editar">
+      <th mat-header-cell *matHeaderCellDef>  Editar </th>
+      <td mat-cell *matCellDef="let element"><a [routerLink]="['/materiaDictadas/edit/', element.id]" class="btn btn-primary btn-sm float-right">Editar</a>  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="eliminar">
+      <th mat-header-cell *matHeaderCellDef>  Eliminar </th>
+      <td mat-cell *matCellDef="let element"><a [routerLink]="" (click)="delete(element.id)" class="btn btn-danger btn-sm float-right" >Eliminar</a></td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <br><br><br><br><mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+ 
+  
+</div> <br><br><br>
+<mat-card-actions>
+  <button mat-button class="btn btn-success float-right"  routerLinkActive="active" routerLink="/asignarHorario">ATRAS</button>
+</mat-card-actions>
+
+</form><br><br>

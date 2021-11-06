@@ -1,0 +1,23 @@
+<form  class="example-form" [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    <br><br>
+    <table class="example-full-width" cellspacing="0"><tr>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="Nombre">Nombre</mat-label>
+            <input matInput formControlName="nombre">
+        </mat-form-field>
+        <mat-error *ngIf="nombre.invalid && formDir.submitted">Nombre del parametro requerido.</mat-error>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="Valor">Valor</mat-label>
+            <input matInput formControlName="valor">
+        </mat-form-field>
+        <mat-error *ngIf="valor.invalid && formDir.submitted">valor del parametro requerido.</mat-error>
+    
+    </tr></table>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success float-right">Guardar</button>
+            <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+        </div>
+</form>

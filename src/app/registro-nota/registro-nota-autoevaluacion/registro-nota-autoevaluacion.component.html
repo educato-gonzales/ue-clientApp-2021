@@ -1,0 +1,73 @@
+<form (ngSubmit)="save()" [formGroup]="form" #formDir="ngForm"  novalidate>
+<br><br><mat-card class="example-card">
+
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Tipo: Autoevaluación</mat-card-title>
+      <mat-card-subtitle>Detalle Evaluación</mat-card-subtitle>
+    </mat-card-header>
+
+    <form (ngSubmit)="save()" [formGroup]="form" #formDir="ngForm"  novalidate>
+    
+        <br><mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Nota1">Nota</mat-label>
+            <input matInput formControlName="nota1" type="number" placeholder="Ex. Figueroa">
+        </mat-form-field>
+        <mat-error *ngIf="nota1.invalid && formDir.submitted">Nota requerido.</mat-error>
+         
+        <br><mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Descripcion">Descripcion</mat-label>
+            <input matInput formControlName="descripcion" placeholder="Ex. Claudia Jerissa">
+        </mat-form-field>
+        <mat-error *ngIf="descripcion.invalid && formDir.submitted">Descripcion requerido.</mat-error>
+
+        <div class="form-group col-md-8" >
+            <label class="control-label col-md-12">Curso</label>
+            <select class="form-control"  style="background-color: rgba(0, 0, 0, 0.04)" formControlName="idCurso">
+                <option value="{{ obj.id }}" *ngFor="let obj of listaSelectCurso">{{  "Turno:" + " " + obj.turno + " " + "-" +" "+obj.nombre + " "+ obj.nivel }}</option>
+            </select>
+            <span class="text-danger ml-3" *ngIf="idCurso.invalid && formDir.submitted">Curso requerido</span>
+        </div>
+        
+
+        <br><div class="form-group col-md-8">
+            <label class="control-label col-md-12" >Periodo</label>
+            <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04)" formControlName="idPeriodo">
+                <option value="{{ obj.id }}" *ngFor="let obj of listaSelectPeriodo">{{ obj.nombre }}</option>
+            </select>
+            <span class="text-danger ml-3" *ngIf="idPeriodo.invalid && formDir.submitted">Periodo requerido</span>
+        </div>
+        
+        <br><div class="form-group col-md-8">
+            <label class="control-label col-md-12" >Materia</label>
+            <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04)"  formControlName="idMateria">
+                <option value="{{ obj.id }}" *ngFor="let obj of listaSelectMateria">{{ obj.nombre + " "+ "-"+  " "+obj.sigla}}</option>
+            </select>
+            <span class="text-danger ml-3" *ngIf="idMateria.invalid && formDir.submitted">Materia requerido</span>
+        </div>
+    </form>
+
+    <br><mat-divider inset></mat-divider><br>
+
+    <mat-card-actions>
+        <button mat-button type="submit" class="btn btn-success float-right">GUARDAR</button>
+        <button mat-button (click)="cancel()" class="btn btn-secondary float-left">CANCELAR</button>
+    </mat-card-actions><br>
+    
+    <mat-card-content><br>
+      <p>The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.</p><br>
+    </mat-card-content>
+
+    
+
+  </mat-card>
+</form><br><br>
+
+
+
+
+
+
+

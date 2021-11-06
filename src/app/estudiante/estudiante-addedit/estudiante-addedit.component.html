@@ -1,0 +1,89 @@
+<h1>{{actionType}} Estudiante</h1>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="ApPaterno">Apellido Paterno:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="apPaterno">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="apPaterno.invalid && formDir.submitted">
+            ApPaterno del estudiante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="ApMaterno">Apellido Materno:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="apMaterno">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="apMaterno.invalid && formDir.submitted">
+            ApMaterno del estudiante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Nombres">Nombres:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="nombres">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="nombres.invalid && formDir.submitted">
+            Nombres del estudiante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="FechaNacimiento">Fecha Nacimiento:</label>
+        <div class="col-md-12">
+            <input type="date" class="form-control" formControlName="fechaNacimiento">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="fechaNacimiento.invalid && formDir.submitted">
+            FechaNacimiento del estudiante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="CedulaIdentidad">Cedula Identidad:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="cedulaIdentidad">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="cedulaIdentidad.invalid && formDir.submitted">
+            CedulaIdentidad del estudiante requerido.
+        </span>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Telefono">Telefono:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="telefono">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="telefono.invalid && formDir.submitted">
+            Telefono del estudiante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Celular">Celular:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="celular">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="celular.invalid && formDir.submitted">
+            Celular del estudiante requerido.
+        </span>
+    </div>
+    
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Id Periodo:</label>
+        <select class="form-control"  formControlName="idPeriodo">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelect">{{ obj.nombre }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idPeriodo.invalid && formDir.submitted">Id Periodo requerido</span>
+    </div>
+
+    <br><br><br><br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success float-right">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </div>
+</form>

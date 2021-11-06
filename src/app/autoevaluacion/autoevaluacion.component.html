@@ -1,0 +1,9 @@
+<ng-container *ngIf="(autoevaluacion | async) as autoevaluacion; else loading">
+
+    <h1>{{ autoevaluacion.id }}</h1>
+    <div>{{ autoevaluacion.notaSer }}</div>
+    <div>{{ autoevaluacion.notaDecidir }}</div>
+    <div>{{ autoevaluacion.idEvalPoseedor }}</div>
+    
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

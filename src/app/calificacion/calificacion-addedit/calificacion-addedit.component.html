@@ -1,0 +1,86 @@
+<br><br>
+<form class="example-form" [formGroup]="form"  #formDir="ngForm" (ngSubmit)="save()" novalidate>
+
+    <div class="form-group col-md-8">
+        <label class="control-label col-md-12">Burscar curso:</label>
+        <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04); width: 48%"  formControlName="idCurso" (click)="buscar(idCurso.value)">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelectCurso">{{ obj.nombre }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idCurso.invalid && formDir.submitted">Curso requerido</span>
+    </div>
+
+        <mat-form-field appearance="standard">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Administrador" #input>
+        </mat-form-field>
+        
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+          
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Nº </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+              </ng-container>
+              <ng-container matColumnDef="idCurso">
+                <th mat-header-cell *matHeaderCellDef> Curso </th>
+                <td mat-cell *matCellDef="let element"> {{element.idCurso}} </td>
+              </ng-container>
+              <ng-container matColumnDef="idEstudiante">
+                <th mat-header-cell *matHeaderCellDef> Estudiante </th>
+                <td mat-cell *matCellDef="let element"> {{element.idEstudiante}} </td>
+              </ng-container>
+              <ng-container matColumnDef="calificar">
+                <th mat-header-cell *matHeaderCellDef>  Calificar </th>
+                <td mat-cell *matCellDef="let element"><a class="btn btn-secondary btn-sm float-right" data-toggle="modal" data-target="#myModal" (click)="estudiante(element.idEstudiante)">Calificar</a>  </td>
+              </ng-container>
+              <ng-container matColumnDef="editar">
+                <th mat-header-cell *matHeaderCellDef>  Editar </th>
+                <td mat-cell *matCellDef="let element"><a [routerLink]="['/estudianteCurso/edit/', element.id]" class="btn btn-primary btn-sm float-right">Editar</a>  </td>
+              </ng-container>
+              <ng-container matColumnDef="eliminar">
+                <th mat-header-cell *matHeaderCellDef>  Eliminar </th>
+                <td mat-cell *matCellDef="let element"><a [routerLink]="" (click)="delete(element.id)" class="btn btn-danger btn-sm float-right" >Eliminar</a></td>
+              </ng-container>
+        
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+            </table>
+            <br><br><br><br><mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+      
+        </div> <br><br><br>
+        <div class="container" >
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button></div>
+    
+                  <div class="modal-body">  
+                          <table class="example-full-width" cellspacing="0"><tr>  
+    
+                              <table class="example-full-width" cellspacing="0"><tr>
+
+                                <br><mat-form-field class="example-full-width"  appearance="fill">
+                                  <mat-label for="Nota">Nota</mat-label>
+                                      <input matInput formControlName="nota" type="number" placeholder="Ex. Figueroa">
+                                  </mat-form-field>
+                                  <mat-error *ngIf="nota.invalid && formDir.submitted">Nota requerido.</mat-error>
+                                  
+                              </tr></table>
+                            
+                              <div class="form-group"> 
+                                  <button type="submit" class="btn btn-success float-right" >Guardar</button>
+                              </div>
+                              <br><br><br>
+    
+                          </tr></table>
+    
+                      </div>
+                   <div class="modal-footer"><button type="submit" class="btn btn-default" data-dismiss="modal">Cerrar</button></div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+</form>

@@ -1,0 +1,31 @@
+<div class="py-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <span class="anchor" id="formLogin"></span>
+      <!-- form card login -->
+      <div class="card rounded-0">
+        <div class="card-header">
+          <h3 class="mb-0">Ingresar</h3>
+        </div>
+        <div class="card-body">
+          <form class="form">
+            <div class="form-group">
+              <label for="uname1">Usuario</label>
+              <input type="text" class="form-control rounded-0" [(ngModel)]="loginUserData.nombre" name="email" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label>Clave</label>
+              <input type="password" class="form-control rounded-0" [(ngModel)]="loginUserData.clave" name="password" required>
+            </div>
+            <br>
+            <button type="button" (click)="loginUser()" class="btn btn-success float-right">Entrar al Sitio</button>
+            <button type="button"  [routerLink]="['/registrarse']" routerLinkActive="router-link-active"  class="btn btn-secondary float-right">Registrarme</button>
+          </form>
+        </div>
+        <!--/card-block-->
+      </div>
+      <!-- /form card login -->
+    </div>
+  </div>
+</div>

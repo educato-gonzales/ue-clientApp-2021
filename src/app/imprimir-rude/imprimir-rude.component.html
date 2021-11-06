@@ -1,0 +1,409 @@
+<br>
+<mat-form-field appearance="outline" [formGroup]="form"  #formDir="ngForm">
+    <mat-label for="Buscar">Ingrese Código RUDE</mat-label>
+    <input matInput formControlName="buscar" placeholder="CI">
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field> 
+<mat-card-actions>  
+    <button mat-button (click)="buscarId(buscar.value)" >Buscar</button>
+</mat-card-actions>
+
+<div class="abc">
+  <button class="btn btn-success float-right" (click)="Screen()">DESCARGAR PDF</button>
+</div><br><br><br><br>
+
+<div class="container-fluid" id="content">
+  <br><div class="row row-cols-1" >
+      <div style="text-align:center"><mat-panel-title >FORMULARIO DE INSCRIPCIÓN/ACTUALIZACIÓN
+        REGISTRO ÚNICO DE ESTUDIANTES</mat-panel-title></div>
+        <div style="text-align:center"><mat-panel-description>LA INFORMACIÓN RECABADA POR EL RUDE SERÁ UTILIZADA ÚNICA Y EXCLUSÍVAMENTE PARA
+          FINES DE DISEÑO Y EJECUCIÓN DE POLÍTICAS PÚBLICAS EDUCATIVAS Y SOCIALES</mat-panel-description></div>
+          <div><mat-panel-description>Importante: El formulario debe ser llenado por el padre, madre o tutor(a), considerando lo siguiente:</mat-panel-description></div>
+          <div><mat-panel-description style="margin-left: 5.7%">(*)  Estos campos serán llenados por la Unidad Educativa</mat-panel-description></div>
+          <div><mat-panel-description style="margin-left: 5.7%">(**) Estos campos requieren la presentación del documento al que se hace referencia</mat-panel-description></div>
+          <div><mat-panel-description style="margin-left: 5.7%">(?)  En el reverso del Formulario se incluyen aclaraciones de ayuda para el llenado de estos campos</mat-panel-description></div>
+    </div><br>
+    
+    <div class="row row-cols-6">
+      <div><mat-panel-description>I. DATOS DE LA UNIDAD EDUCATIVA</mat-panel-description></div>
+      
+      <div><sub>(*)CÓDIGO SIE DE LA UNIDAD EDUCATIVA</sub></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formCodSieue}}</div>
+    </div><br> 
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>II. DATOS DE LA O EL ESTUDIANTE</mat-panel-description></div>
+    </div><br>
+    
+    <div class="row row-cols-6">
+      <div><mat-panel-description>2.1 APELLIDO(S) Y NOMBRE(S)</mat-panel-description></div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div> <mat-label>Apellido paterno</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formApPaterno}}</div>
+      <div> <mat-label>Apellido Materno</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formApMaterno}}</div>
+      <div> <mat-label>Nombre(s)</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formNombres}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>2.2 LUGAR DE NACIMIENTO</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-6">
+      <div> <mat-label>País</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black" >{{formPais}}</div>
+      <div> <mat-label>Provincia</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formProvincia}}</div>
+      <div> <mat-label>Depto.</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formDepartamento}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>(**)2.3 CERTIFICADO DE NACIMIENTO</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-61" > 
+      <div> <mat-label>Oficialia N°</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black" >{{formOficialia}}</div>
+      <div> <mat-label>Libro N°</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formLibro}}</div>
+      <div> <mat-label>Partida N°</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formPartida}}</div>
+      <div> <mat-label>Folio N°</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formFolio}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>2.4 FECHA DE NACIMIENTO</mat-panel-description></div>
+      <div class="col w3-panel w3-border w3-border-black" >{{formFechaNacimiento}}</div>
+    </div><br>
+    
+    <div class="row row-cols-6">
+      <div><mat-panel-description>(?)2.5 DOCUMENTO DE IDENTIFICACIÓN</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-61" > 
+      <div> <mat-label>Carnet de Identidad</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black" >{{formCedulaIdentidad}}</div>
+      <div> <mat-label>Complemento</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formComplemento}}</div>
+      <div> <mat-label>Expedido</mat-label></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formExpedido}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>(*)2.6 CÓDIGO RUDE (Código automático generado por el Sistema)</mat-panel-description></div>
+      <div class="col w3-panel w3-border w3-border-black" >{{formCodRude}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>2.7 SEXO</mat-panel-description></div>
+      <div class="col w3-panel w3-border w3-border-black" >{{formSexo}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>(?) 2.8 ¿EL/LA ESTUDIANTE PRESENTA ALGUNA DISCAPACIDAD?</mat-panel-description></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formDiscapacidad}}</div>
+    </div><br> 
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>(**)2.9 Nº DE REGISTRO DE DISCAPACIDAD O IBC</mat-panel-description></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formNumDiscapacidad}}</div>
+    </div><br> 
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>2.10 TIPO DE DISCAPACIDAD</mat-panel-description></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formTipoDiscapacidad}}</div>
+    </div><br> 
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>2.11 GRADO DE DISCAPACIDAD</mat-panel-description></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formGradoDiscapacidad}}</div>
+    </div><br>
+    
+    <div class="row row-cols-6">
+      <div><mat-panel-description>III. DIRECCIÓN ACTUAL DE LA O EL ESTUDIANTE (Información para uso exclusivo de la Unidad Educativa)</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-62" > 
+      <div> <mat-label>Departamento</mat-label></div>
+      <div class="col w3-panel2 w3-border w3-border-black" >{{formDepartamentoEst}}</div>
+      <div> <mat-label>Provincia</mat-label></div>
+      <div class="col w3-panel2 w3-border w3-border-black">{{formProvinciaEst}}</div>
+      <div> <mat-label>Sección/Municipio</mat-label></div>
+      <div class="col w3-panel2 w3-border w3-border-black">{{formSeccionEst}}</div>
+      <div> <mat-label>Localidad/Comunidad</mat-label></div>
+      <div class="col w3-panel2 w3-border w3-border-black" >{{formLocalidadEst}}</div>
+      <div> <mat-label>Zona/Villa</mat-label></div>
+      <div class="col w3-panel2 w3-border w3-border-black">{{formZonaEst}}</div>
+      <div> <mat-label>Avenida/Calle</mat-label></div>
+      <div class="col w3-panel2 w3-border w3-border-black">{{formAvenidaEst}}</div>
+      <div> <mat-label>Nº vivienda</mat-label></div>
+      <div class="col w3-panel2 w3-border w3-border-black">{{formNumViviendaEst}}</div>
+      <div> <mat-label>Teléfono fijo</mat-label></div>
+      <div class="col w3-panel2 w3-border w3-border-black">{{formTelefono}}</div>
+      <div> <mat-label>Celular de contacto</mat-label></div>
+      <div class="col w3-panel2 w3-border w3-border-black">{{formCelular}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>IV. ASPECTOS SOCIOECONÓMICOS DE LA O EL ESTUDIANTE</mat-panel-description></div>
+    </div>
+    <div class="row row-cols-6">
+      <div><mat-panel-description>4.1 IDIOMA Y PERTENENCIA CULTURAL DE LA O EL ESTUDIANTE</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-62">
+      <div><mat-panel-description>(?) 4.1.1 ¿Cuál es el idioma en el que aprendió a hablar en su niñez?</mat-panel-description></div>
+      <div class="col w3-panel3 w3-border w3-border-black">{{formIdiomaNiniez}}</div>
+      <div><mat-panel-description>(?) 4.1.2 ¿Qué idioma(s) habla frecuentemente?</mat-panel-description></div>
+      <div class="col w3-panel3 w3-border w3-border-black">{{formIdiomaFrecuente}}</div>
+      <div><mat-panel-description>(?) 4.1.3 ¿Pertenece a una nación, pueblo indígena originario campesino o afroboliviano?</mat-panel-description></div>
+      <div class="col w3-panel3 w3-border w3-border-black">{{formNacion}}</div>
+    </div>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>4.2 SALUD DE LA O EL ESTUDIANTE</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-6">
+      <div><mat-panel-description>4.2.1 ¿Existe algún Centro de Salud/Posta/Hospital en su comunidad/barrio/zona?</mat-panel-description></div>
+      <div class="col w3-panel4 w3-border w3-border-black">{{formCentroSalud}}</div>
+      <div><mat-panel-description>4.2.2 El año pasado, por problemas de salud, ¿acudió o se atendió en…</mat-panel-description></div>
+      <div class="col w3-panel4 w3-border w3-border-black">{{formProblemaSalud}}</div>
+      <div><mat-panel-description>4.2.3 El año pasado, ¿Cuántas veces fue al Centro de Salud?</mat-panel-description></div>
+      <div class="col w3-panel4 w3-border w3-border-black">{{formFrecuenciaCs}}</div>
+      <div><mat-panel-description>4.2.4 ¿Tiene seguro de salud?</mat-panel-description></div>
+      <div class="col w3-panel w3-border w3-border-black">{{formSeguroCs}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>4.3 ACCESO DE LA O EL ESTUDIANTE A SERVICIOS BÁSICOS</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-63">
+      <div><mat-panel-description>4.3.1 ¿Tiene acceso a agua por cañería de red?</mat-panel-description></div>
+      <div class="col w3-panel6 w3-border w3-border-black">{{formAgua}}</div>
+      <div><mat-panel-description>(?)4.3.2 ¿Tiene baño en su vivienda?</mat-panel-description></div>
+      <div class="col w3-panel6 w3-border w3-border-black">{{formBanio}}</div>
+      <div><mat-panel-description>4.3.3 ¿Tiene red de alcantarillado?</mat-panel-description></div>
+      <div class="col w3-panel6 w3-border w3-border-black">{{formAlcantarillado}}</div>
+      <div><mat-panel-description>4.3.4 ¿Usa energía eléctrica para alumbrar su vivienda?</mat-panel-description></div>
+      <div class="col w3-panel6 w3-border w3-border-black">{{formEnergiaElectrica}}</div>
+      <div><mat-panel-description>4.3.5 ¿Cuenta con servicio de recojo de basura?</mat-panel-description></div>
+      <div class="col w3-panel6 w3-border w3-border-black">{{formServBasura}}</div>
+      <div><mat-panel-description>4.3.6 La vivienda que ocupa el hogar es:</mat-panel-description></div>
+      <div class="col w3-panel6 w3-border w3-border-black">{{formVivienda}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>4.4 ACCESO A INTERNET DE LA O EL ESTUDIANTE</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-6">
+      <div><mat-panel-description>4.4.1 El estudiante accede a internet en:</mat-panel-description></div>
+      <div class="col w3-panel9 w3-border w3-border-black">{{formInternet}}</div>
+      <div><mat-panel-description>4.4.2 ¿Con qué frecuencia usa internet?</mat-panel-description></div>
+      <div class="col w3-panel9 w3-border w3-border-black">{{formFrecuenciaInternet}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>(?)4.5 ACTIVIDAD LABORAL DE LA O EL ESTUDIANTE</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-6">
+      <div><mat-panel-description>4.5.1 En la pasada gestión ¿El estudiante trabajó?</mat-panel-description></div>
+      <div class="col w3-panel4 w3-border w3-border-black">{{formTrabajo}}</div>
+      <div><mat-panel-description>Mes trabajo</mat-panel-description></div>
+      <div class="col w3-panel4 w3-border w3-border-black">{{formMesesTrabajo}}</div>
+      <div><mat-panel-description>4.5.2 En la pasada gestión ¿En qué actividad trabajó el estudiante?</mat-panel-description></div>
+      <div class="col w3-panel4 w3-border w3-border-black">{{formActividadTrabajo}}</div>
+      <div><mat-panel-description>4.5.3 ¿En qué turno trabajó el estudiante?</mat-panel-description></div>
+      <div class="col w3-panel7 w3-border w3-border-black">{{formTurnoTrabajo}}</div>
+      <div><mat-panel-description>4.5.4 ¿Con qué frecuencia trabajó?</mat-panel-description></div>
+      <div class="col w3-panel7 w3-border w3-border-black">{{formFrecuenciaTrabajo}}</div>
+      <div><mat-panel-description>4.5.5 ¿Recibió algún pago?</mat-panel-description></div>
+      <div class="col w3-panel7 w3-border w3-border-black">{{formPagoTrabajo}}</div>
+      <div><mat-panel-description>Tipo de pago</mat-panel-description></div>
+      <div class="col w3-panel8 w3-border w3-border-black">{{formTipoPago}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>4.6 MEDIO DE TRANSPORTE PARA LLEGAR A LA UNIDAD EDUCATIVA</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-6">
+      <div><mat-panel-description>4.6.1 Generalmente, ¿Cómo llega el estudiante a la Unidad Educativa?</mat-panel-description></div>
+      <div class="col w3-panel3 w3-border w3-border-black">{{formMedioTransporte}}</div>
+      <div><mat-panel-description>4.6.2 Según el medio de transporte señalado, ¿Cuál es el tiempo máximo que demora el estudiante desde su vivienda hasta la Unidad Educativa?</mat-panel-description></div>
+      <div class="col w3-panel3 w3-border w3-border-black">{{formTiempoTransporte}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>4.7 ABANDONO ESCOLAR CORRESPONDIENTE A LA GESTIÓN ANTERIOR</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-6">
+      <div><mat-panel-description>4.7.1 ¿El estudiante abandonó la Unidad Educativa el año pasado?</mat-panel-description></div>
+      <div class="col w3-panel7 w3-border w3-border-black">{{formAbandonoUe}}</div>
+      <div><mat-panel-description>4.7.2 ¿Cuál o cuáles fueron las razones de abandono escolar?</mat-panel-description></div>
+      <div class="col w3-panel7 w3-border w3-border-black">{{formRazonAbandono}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>V. DATOS DEL PADRE, MADRE O TUTOR (A) DE LA O EL ESTUDIANTE</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-6">
+      <div><mat-panel-description>5.2 DATOS DEL PADRE</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-66">
+      <div><mat-panel-description>(**) Cédula de Identidad</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formCedulaIdentidadP}}</div>
+      <div><mat-panel-description>Apellido Paterno</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formApPaternoP}}</div>
+      <div><mat-panel-description>Apellido Materno</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formApMaternoP}}</div>
+      <div><mat-panel-description>Nombre(s)</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formNombresP}}</div>
+      <div><mat-panel-description>Idioma que habla frecuentemente</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formIdiomaFrecuenteP}}</div>
+      <div><mat-panel-description>Ocupación laboral actual</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formOcupacionLaboralP}}</div>
+      <div><mat-panel-description>Mayor grado de instrucción alcanzado</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formGradoInstruccionP}}</div>
+      <div><mat-panel-description>¿Cuál es el parentesco con el estudiante?</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formGradoInstruccionP}}</div>
+      <div><mat-panel-description>Fecha de nacimiento</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formFechaNacimientoP}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>5.3 DATOS DE LA MADRE</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-66">
+      <div><mat-panel-description>(**) Cédula de Identidad</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formCedulaIdentidadM}}</div>
+      <div><mat-panel-description>Apellido Paterno</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formApPaternoM}}</div>
+      <div><mat-panel-description>Apellido Materno</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formApMaternoM}}</div>
+      <div><mat-panel-description>Nombre(s)</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formNombresM}}</div>
+      <div><mat-panel-description>Idioma que habla frecuentemente</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formIdiomaFrecuenteM}}</div>
+      <div><mat-panel-description>Ocupación laboral actual</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formOcupacionLaboralM}}</div>
+      <div><mat-panel-description>Mayor grado de instrucción alcanzado</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formGradoInstruccionM}}</div>
+      <div><mat-panel-description>Fecha de nacimiento</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formFechaNacimientoM}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>5.4 DATOS DEL TUTOR(A)</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-66">
+      <div><mat-panel-description>(**) Cédula de Identidad</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formCedulaIdentidadT}}</div>
+      <div><mat-panel-description>Apellido Paterno</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formApPaternoT}}</div>
+      <div><mat-panel-description>Apellido Materno</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formApMaternoT}}</div>
+      <div><mat-panel-description>Nombre(s)</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formNombresT}}</div>
+      <div><mat-panel-description>Idioma que habla frecuentemente</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formIdiomaFrecuenteT}}</div>
+      <div><mat-panel-description>Ocupación laboral actual</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formOcupacionLaboralT}}</div>
+      <div><mat-panel-description>Mayor grado de instrucción alcanzado</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formGradoInstruccionT}}</div>
+      <div><mat-panel-description>Fecha de nacimiento</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formFechaNacimientoT}}</div>
+    </div><br><br>
+    
+    <div class="row row-cols-6">
+      <div><mat-panel-description>Lugar (Departamento)</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formLugarRegistro}}</div>
+      <div><mat-panel-description>Fecha de registro</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formFechaRegistro}}</div>
+    </div>
+</div><br><br><br><br>
+
+
+
+
+
+<div class="container-fluid" id="content2">
+
+  <br><br><br>
+    <div class="row row-cols-6">
+      <div><mat-panel-description>V. DATOS DEL PADRE, MADRE O TUTOR (A) DE LA O EL ESTUDIANTE</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-6">
+      <div><mat-panel-description>5.2 DATOS DEL PADRE</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-66">
+      <div><mat-panel-description>(**) Cédula de Identidad</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formCedulaIdentidadP}}</div>
+      <div><mat-panel-description>Apellido Paterno</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formApPaternoP}}</div>
+      <div><mat-panel-description>Apellido Materno</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formApMaternoP}}</div>
+      <div><mat-panel-description>Nombre(s)</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formNombresP}}</div>
+      <div><mat-panel-description>Idioma que habla frecuentemente</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formIdiomaFrecuenteP}}</div>
+      <div><mat-panel-description>Ocupación laboral actual</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formOcupacionLaboralP}}</div>
+      <div><mat-panel-description>Mayor grado de instrucción alcanzado</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formGradoInstruccionP}}</div>
+      <div><mat-panel-description>¿Cuál es el parentesco con el estudiante?</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formGradoInstruccionP}}</div>
+      <div><mat-panel-description>Fecha de nacimiento</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formFechaNacimientoP}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>5.3 DATOS DE LA MADRE</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-66">
+      <div><mat-panel-description>(**) Cédula de Identidad</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formCedulaIdentidadM}}</div>
+      <div><mat-panel-description>Apellido Paterno</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formApPaternoM}}</div>
+      <div><mat-panel-description>Apellido Materno</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formApMaternoM}}</div>
+      <div><mat-panel-description>Nombre(s)</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formNombresM}}</div>
+      <div><mat-panel-description>Idioma que habla frecuentemente</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formIdiomaFrecuenteM}}</div>
+      <div><mat-panel-description>Ocupación laboral actual</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formOcupacionLaboralM}}</div>
+      <div><mat-panel-description>Mayor grado de instrucción alcanzado</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formGradoInstruccionM}}</div>
+      <div><mat-panel-description>Fecha de nacimiento</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formFechaNacimientoM}}</div>
+    </div><br>
+
+    <div class="row row-cols-6">
+      <div><mat-panel-description>5.4 DATOS DEL TUTOR(A)</mat-panel-description></div>
+    </div><br>
+    <div class="row row-cols-66">
+      <div><mat-panel-description>(**) Cédula de Identidad</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formCedulaIdentidadT}}</div>
+      <div><mat-panel-description>Apellido Paterno</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formApPaternoT}}</div>
+      <div><mat-panel-description>Apellido Materno</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formApMaternoT}}</div>
+      <div><mat-panel-description>Nombre(s)</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formNombresT}}</div>
+      <div><mat-panel-description>Idioma que habla frecuentemente</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formIdiomaFrecuenteT}}</div>
+      <div><mat-panel-description>Ocupación laboral actual</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formOcupacionLaboralT}}</div>
+      <div><mat-panel-description>Mayor grado de instrucción alcanzado</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formGradoInstruccionT}}</div>
+      <div><mat-panel-description>Fecha de nacimiento</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formFechaNacimientoT}}</div>
+    </div><br><br>
+    
+    <div class="row row-cols-6">
+      <div><mat-panel-description>Lugar (Departamento)</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formLugarRegistro}}</div>
+      <div><mat-panel-description>Fecha de registro</mat-panel-description></div>
+      <div class="col w3-panel10 w3-border w3-border-black">{{formFechaRegistro}}</div>
+    </div>
+</div><br><br><br><br>
+ 

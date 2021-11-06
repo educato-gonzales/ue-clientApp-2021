@@ -1,0 +1,61 @@
+<ng-container *ngIf="(rude | async) as rude; else loading">
+
+    <h1>{{ rude.codSieue }}</h1>
+    <div>{{ rude.pais }}</div>
+    <div>{{ rude.departamento }}</div>
+    <div>{{ rude.provincia }}</div>
+    <div>{{ rude.localidad }}</div>
+    <div>{{ rude.oficialia }}</div>
+    <div>{{ rude.libro }}</div>
+    <div>{{ rude.partida }}</div>
+    <div>{{ rude.folio }}</div>
+    <div>{{ rude.complemento }}</div>
+    <div>{{ rude.expedido }}</div>
+    <div>{{ rude.codRude }}</div>
+    <div>{{ rude.sexo }}</div>
+    <div>{{ rude.discapacidad }}</div>
+    <div>{{ rude.numDiscapacidad }}</div>
+    <div>{{ rude.tipoDiscapacidad }}</div>
+    <div>{{ rude.gradoDiscapacidad }}</div>
+    <div>{{ rude.departamentoEst }}</div>
+    <div>{{ rude.provinciaEst }}</div>
+    <div>{{ rude.seccionEst }}</div>
+    <div>{{ rude.localidadEst }}</div>
+    <div>{{ rude.zonaEst }}</div>
+    <div>{{ rude.avenidaEst }}</div>
+    <div>{{ rude.numViviendaEst }}</div>
+    <div>{{ rude.idiomaNiniez }}</div>
+    <div>{{ rude.idiomaFrecuente }}</div>
+    <div>{{ rude.nacion }}</div>
+    <div>{{ rude.centroSalud }}</div>
+    <div>{{ rude.problemaSalud }}</div>
+    <div>{{ rude.frecuenciaCs }}</div>
+    <div>{{ rude.seguroCs }}</div>
+    <div>{{ rude.agua }}</div>
+    <div>{{ rude.banio }}</div>
+    <div>{{ rude.alcantarillado }}</div>
+    <div>{{ rude.energiaElectrica }}</div>
+    <div>{{ rude.servBasura }}</div>
+    <div>{{ rude.vivienda }}</div>
+    <div>{{ rude.frecuenciaInternet }}</div>
+    <div>{{ rude.trabajo }}</div>
+    <div>{{ rude.mesesTrabajo }}</div>
+    <div>{{ rude.actividadTrabajo }}</div>
+    <div>{{ rude.turnoTrabajo }}</div>
+    <div>{{ rude.frecuenciaTrabajo }}</div>
+    <div>{{ rude.pagoTrabajo }}</div>
+    <div>{{ rude.tipoPago }}</div>
+    <div>{{ rude.medioTransporte }}</div>
+    <div>{{ rude.tiempoTransporte }}</div>
+    <div>{{ rude.abandonoUe }}</div>
+    <div>{{ rude.razonAbandono }}</div>
+    <div>{{ rude.fechaRegistro }}</div>
+    <div>{{ rude.lugarRegistro }}</div>
+    <div>{{ rude.idRepresentantePadre }}</div>
+    <div>{{ rude.idRepresentanteMadre }}</div>
+    <div>{{ rude.idRepresentanteTutor }}</div>
+    <div>{{ rude.idrude }}</div>
+
+    
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

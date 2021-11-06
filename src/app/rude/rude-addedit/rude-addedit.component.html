@@ -1,0 +1,582 @@
+<h1>{{actionType}} RUDE</h1>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="CodSieue">Cod. SIEUE:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="codSieue">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="codSieue.invalid && formDir.submitted">
+            CodSIEUE del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Pais">Pais:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="pais">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="pais.invalid && formDir.submitted">
+            Pais del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Departamento">Departamento:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="departamento">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="departamento.invalid && formDir.submitted">
+            Departamento del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Provincia">Provincia:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="provincia">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="provincia.invalid && formDir.submitted">
+            Provincia del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Localidad">Localidad:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="localidad">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="localidad.invalid && formDir.submitted">
+            Localidad del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Oficialia">Oficialia:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="oficialia">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="oficialia.invalid && formDir.submitted">
+            Oficialia del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Libro">Libro:</label>
+        <div class="col-md-12">
+            <input type="number" class="form-control" formControlName="libro">
+        </div> 
+        <span class="text-danger ml-3 " *ngIf="libro.invalid && formDir.submitted">
+            Libro del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Partida">Partida:</label>
+        <div class="col-md-12">
+            <input type="number" class="form-control" formControlName="partida">
+        </div> 
+        <span class="text-danger ml-3 " *ngIf="partida.invalid && formDir.submitted">
+            Partida del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Folio">Folio:</label>
+        <div class="col-md-12">
+            <input type="number" class="form-control" formControlName="folio">
+        </div> 
+        <span class="text-danger ml-3 " *ngIf="folio.invalid && formDir.submitted">
+            Folio del RUDE requerido.
+        </span>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Complemento">Complemento:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="complemento">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="complemento.invalid && formDir.submitted">
+            Complemento del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Expedido">Expedido:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="expedido">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="expedido.invalid && formDir.submitted">
+            Expedido del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="CodRude">Cod. RUDE:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="codRude">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="codRude.invalid && formDir.submitted">
+            CodRude del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Sexo">Sexo</label>
+        <div class="col-md-12">
+        <select class="form-control" formControlName="sexo">
+            <option value="1">Masculino</option>
+            <option value="0">Femenino</option>
+          </select>
+        </div>
+        <span class="text-danger ml-3" *ngIf="sexo.invalid && formDir.submitted">Sexo del RUDE requerido</span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Discapacidad">Discapacidad:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="discapacidad">
+        </div> 
+        <span class="text-danger ml-3 " *ngIf="discapacidad.invalid && formDir.submitted">
+            Discapacidad del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="NumDiscapacidad">N° Discapacidad:</label>
+        <div class="col-md-12">
+            <input type="number" class="form-control" formControlName="numDiscapacidad">
+        </div> 
+        <span class="text-danger ml-3 " *ngIf="numDiscapacidad.invalid && formDir.submitted">
+            Discapacidad del RUDE requerido.
+        </span>
+    </div>
+
+
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="TipoDiscapacidad">Tipo Discapacidad:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="tipoDiscapacidad">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="tipoDiscapacidad.invalid && formDir.submitted">
+            TipoDiscapacidad del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="GradoDiscapacidad">Grado Discapacidad:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="gradoDiscapacidad">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="gradoDiscapacidad.invalid && formDir.submitted">
+            GradoDiscapacidad del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="DepartamentoEst">DepartamentoEst:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="departamentoEst">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="departamentoEst.invalid && formDir.submitted">
+            DepartamentoEst del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="ProvinciaEst">ProvinciaEst:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="provinciaEst">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="provinciaEst.invalid && formDir.submitted">
+            ProvinciaEst del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="SeccionEst">SeccionEst:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="seccionEst">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="seccionEst.invalid && formDir.submitted">
+            SeccionEst del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="LocalidadEst">LocalidadEst:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="localidadEst">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="localidadEst.invalid && formDir.submitted">
+            LocalidadEst del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="ZonaEst">ZonaEst:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="zonaEst">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="zonaEst.invalid && formDir.submitted">
+            ZonaEst del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="AvenidaEst">AvenidaEst:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="avenidaEst">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="avenidaEst.invalid && formDir.submitted">
+            AvenidaEst del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="NumViviendaEst">NumViviendaEst:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="numViviendaEst">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="numViviendaEst.invalid && formDir.submitted">
+            NumViviendaEst del RUDE requerido.
+        </span>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="IdiomaNinez">IdiomaNiñez:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="idiomaNiniez">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="idiomaNiniez.invalid && formDir.submitted">
+            IdiomaNiñez del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="IdiomaFrecuente">IdiomaFrecuente:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="idiomaFrecuente">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="idiomaFrecuente.invalid && formDir.submitted">
+            IdiomaFrecuente del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Nacion">Nacion:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="nacion">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="nacion.invalid && formDir.submitted">
+            Nacion del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="CentroSalud">Centro Salud:</label>
+        <div class="col-md-12">
+        <select class="form-control" formControlName="centroSalud">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <span class="text-danger ml-3" *ngIf="centroSalud.invalid && formDir.submitted">Centro Salud del Medico requerido</span>
+    </div>
+
+     <div class="form-group row">
+        <label class="control-label col-md-12" for="ProblemaSalud">ProblemaSalud:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="problemaSalud">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="problemaSalud.invalid && formDir.submitted">
+            ProblemaSalud del RUDE requerido.
+        </span>
+    </div>
+
+     <div class="form-group row">
+        <label class="control-label col-md-12" for="FrecuenciaCs">Frecuencia CS:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="frecuenciaCs">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="frecuenciaCs.invalid && formDir.submitted">
+            FrecuenciaCs del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="SeguroCs">seguroCs</label>
+        <div class="col-md-12">
+        <select class="form-control" formControlName="seguroCs">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <span class="text-danger ml-3" *ngIf="seguroCs.invalid && formDir.submitted">Seguro Cs del Medico requerido</span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Agua">Agua</label>
+        <div class="col-md-12">
+        <select class="form-control" formControlName="agua">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <span class="text-danger ml-3" *ngIf="agua.invalid && formDir.submitted">Agua del Medico requerido</span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Banio">Baño</label>
+        <div class="col-md-12">
+        <select class="form-control" formControlName="banio">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <span class="text-danger ml-3" *ngIf="banio.invalid && formDir.submitted">Baño del Medico requerido</span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Alcantarillado">Alcantarillado</label>
+        <div class="col-md-12">
+        <select class="form-control" formControlName="alcantarillado">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <span class="text-danger ml-3" *ngIf="alcantarillado.invalid && formDir.submitted">Alcantarillado del Medico requerido</span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="EnergiaElectrica">Energia Electrica</label>
+        <div class="col-md-12">
+        <select class="form-control" formControlName="energiaElectrica">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <span class="text-danger ml-3" *ngIf="energiaElectrica.invalid && formDir.submitted">Energia Electrica del Medico requerido</span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="ServBasura">Servicio Basura</label>
+        <div class="col-md-12">
+        <select class="form-control" formControlName="servBasura">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <span class="text-danger ml-3" *ngIf="servBasura.invalid && formDir.submitted">Servicio Basura Electrica del Medico requerido</span>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="ServBasura">ServBasura:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="servBasura">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="servBasura.invalid && formDir.submitted">
+            ServBasura del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="vivienda">vivienda:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="vivienda">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="vivienda.invalid && formDir.submitted">
+            vivienda del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Internet">Internet:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="internet">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="internet.invalid && formDir.submitted">
+            Internet del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="FrecuenciaInternet">FrecuenciaInternet:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="frecuenciaInternet">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="frecuenciaInternet.invalid && formDir.submitted">
+            FrecuenciaInternet del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Trabajo">Trabajo</label>
+        <div class="col-md-12">
+        <select class="form-control" formControlName="trabajo">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <span class="text-danger ml-3" *ngIf="trabajo.invalid && formDir.submitted">Trabajo del Medico requerido</span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="MesesTrabajo">MesesTrabajo:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="mesesTrabajo">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="mesesTrabajo.invalid && formDir.submitted">
+            MesesTrabajo del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="actividadTrabajo">actividadTrabajo:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="actividadTrabajo">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="actividadTrabajo.invalid && formDir.submitted">
+            actividadTrabajo del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="TurnoTrabajo">TurnoTrabajo:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="turnoTrabajo">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="turnoTrabajo.invalid && formDir.submitted">
+            TurnoTrabajo del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="FrecuenciaTrabajo">FrecuenciaTrabajo:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="frecuenciaTrabajo">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="frecuenciaTrabajo.invalid && formDir.submitted">
+            FrecuenciaTrabajo del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="PagoTrabajo">PagoTrabajo</label>
+        <div class="col-md-12">
+        <select class="form-control" formControlName="pagoTrabajo">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <span class="text-danger ml-3" *ngIf="pagoTrabajo.invalid && formDir.submitted">PagoTrabajo del Medico requerido</span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="TipoPago">Tipo Pago</label>
+        <div class="col-md-12">
+        <select class="form-control" formControlName="tipoPago">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <span class="text-danger ml-3" *ngIf="tipoPago.invalid && formDir.submitted">Tipo Pago del Medico requerido</span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="MedioTransporte">MedioTransporte:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="medioTransporte">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="medioTransporte.invalid && formDir.submitted">
+            MedioTransporte del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="TiempoTransporte">TiempoTransporte:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="tiempoTransporte">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="tiempoTransporte.invalid && formDir.submitted">
+            TiempoTransporte del RUDE requerido.
+        </span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="AbandonoUE">Abandono UE</label>
+        <div class="col-md-12">
+        <select class="form-control" formControlName="abandonoUe">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <span class="text-danger ml-3" *ngIf="abandonoUe.invalid && formDir.submitted">AbandonoUE del Medico requerido</span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="RazonAbandono">RazonAbandono:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="razonAbandono">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="razonAbandono.invalid && formDir.submitted">
+            RazonAbandono del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="FechaRegistro">FechaRegistro:</label>
+        <div class="col-md-12">
+            <input type="date" class="form-control" formControlName="fechaRegistro">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="fechaRegistro.invalid && formDir.submitted">
+            FechaRegistro del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="LugarRegistro">LugarRegistro:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="lugarRegistro">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="lugarRegistro.invalid && formDir.submitted">
+            LugarRegistro del RUDE requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Id Representante Padre:</label>
+        <select class="form-control"  formControlName="idRepresentantePadre">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelectRepresentante">{{ obj.nombres }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idRepresentantePadre.invalid && formDir.submitted">Id Representante Padre requerido</span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Id Representante Madre:</label>
+        <select class="form-control"  formControlName="idRepresentanteMadre">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelectRepresentante">{{ obj.nombres }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idRepresentanteMadre.invalid && formDir.submitted">Id Representante Madre requerido</span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Id Representante Tutor:</label>
+        <select class="form-control"  formControlName="idRepresentanteTutor">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelectRepresentante">{{ obj.nombres }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idRepresentanteTutor.invalid && formDir.submitted">Id Representante Tutor requerido</span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Id Estudiante:</label>
+        <select class="form-control"  formControlName="idEstudiante">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelectEstudiante">{{ obj.nombres }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idEstudiante.invalid && formDir.submitted">id RUDE requerido</span>
+    </div>
+
+
+    <br><br><br><br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success float-right">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </div>
+</form>

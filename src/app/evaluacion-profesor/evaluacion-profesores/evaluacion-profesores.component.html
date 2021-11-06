@@ -1,0 +1,29 @@
+<h1>EVALUACION PROFESORES</h1>
+<p *ngIf="!evaluacionProfesoresLista"><em>Cargando..!</em></p>
+<p>
+    <a [routerLink]="['/addEvaluacionProfesor']" class="btn btn-primary float-right mb-3">Nueva evaluacion profesor</a>
+</p>
+<table class="table table-responsive table-hover" *ngIf="(evaluacionProfesoresLista)?.length>0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nota Ser</th>
+            <th>Nota Decidir</th>
+            <th>Estudiante</th>
+            <th>Id evaluacion poseedor</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody>
+    <tr *ngFor="let evaluacionProfesor of evaluacionProfesoresLista">
+        <td>{{ evaluacionProfesor.id }}</td>
+        <td><a [routerLink]="['/evaluacionProfesor/', evaluacionProfesor.Id]">{{evaluacionProfesor.notaSer}}</a></td>
+        <td>{{ evaluacionProfesor.notaDecidir }}</td>
+        <td>{{ evaluacionProfesor.idEstudiante }}</td>
+        <td>{{ evaluacionProfesor.idEvalPoseedor }}</td>
+        <td><a [routerLink]="['/evaluacionProfesor/edit/', evaluacionProfesor.id]" class="btn btn-primary btn-sm float-right">Editar</a></td>
+        <td><a [routerLink]="" (click)="delete(evaluacionProfesor.id)" class="btn btn-danger btn-sm float-right">Eliminar</a></td>
+    </tr>
+</tbody>
+</table> 

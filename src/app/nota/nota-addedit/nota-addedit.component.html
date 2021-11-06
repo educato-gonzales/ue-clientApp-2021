@@ -1,0 +1,80 @@
+<h1>{{actionType}} Nota</h1>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Fecha">Fecha:</label>
+        <div class="col-md-12">
+            <input type="date" class="form-control" formControlName="fecha">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="fecha.invalid && formDir.submitted">
+            Fecha de la requerida.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Nota1">Nota:</label>
+        <div class="col-md-12">
+            <input type="number" class="form-control" formControlName="nota1">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="nota1.invalid && formDir.submitted">
+            Nota de la requerida.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Descripcion">Descripcion:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="descripcion">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="descripcion.invalid && formDir.submitted">
+            Descripcion de la requerida.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Curso</label>
+        <select class="form-control"  formControlName="idCurso">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelectCurso">{{ obj.nombre }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idCurso.invalid && formDir.submitted">Curso requerido</span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Periodo</label>
+        <select class="form-control"  formControlName="idPeriodo">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelectPeriodo">{{ obj.nombre }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idPeriodo.invalid && formDir.submitted">Periodo requerido</span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Materia</label>
+        <select class="form-control"  formControlName="idMateria">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelectMateria">{{ obj.nombre }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idMateria.invalid && formDir.submitted">Materia requerido</span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Categoria</label>
+        <select class="form-control"  formControlName="idCategoria">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelectCategoria">{{ obj.nombre }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idCategoria.invalid && formDir.submitted">Categoria requerido</span>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="IdRef">IdRef:</label>
+        <div class="col-md-12">
+            <input type="number" class="form-control" formControlName="idRef">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="idRef.invalid && formDir.submitted">
+            IdRef de la requerida.
+        </span>
+    </div>
+
+    <br><br><br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success float-right">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </div>
+</form>

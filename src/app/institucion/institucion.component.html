@@ -1,0 +1,53 @@
+<ng-container *ngIf="(institucion | async) as institucion; else loading">
+
+    <h1>{{ institucion.codUe }}</h1>
+    <div>{{ institucion.nombreUe }}</div>
+    <div>{{ institucion.numResolucionAdm1 }}</div>
+    <div>{{ institucion.fechaResolucionAdm1 }}</div>
+    <div>{{ institucion.codDistritoEducativo }}</div>
+    <div>{{ institucion.nombreDistritoEducativo }}</div>
+    <div>{{ institucion.numResolucionAdm2 }}</div>
+    <div>{{ institucion.fechaResolucionAdm2 }}</div>
+    <div>{{ institucion.codEdificioEscolar }}</div>
+    <div>{{ institucion.nuevoCodEdificioEscolar }}</div>
+    <div>{{ institucion.departamento }}</div>
+    <div>{{ institucion.provincia }}</div>
+    <div>{{ institucion.seccionMunicipal }}</div>
+    <div>{{ institucion.canton }}</div>
+    <div>{{ institucion.ciudad }}</div>
+    <div>{{ institucion.zona }}</div>
+    <div>{{ institucion.direccion }}</div>
+    <div>{{ institucion.estatal }}</div>
+    <div>{{ institucion.convenio }}</div>
+    <div>{{ institucion.nombreInstitucion }}</div>
+    <div>{{ institucion.comunitaria }}</div>
+    <div>{{ institucion.privada }}</div>
+    <div>{{ institucion.edFormal }}</div>
+    <div>{{ institucion.edInicial }}</div>
+    <div>{{ institucion.edPrimaria }}</div>
+    <div>{{ institucion.edSecundaria }}</div>
+    <div>{{ institucion.edAlternativa }}</div>
+    <div>{{ institucion.edAdultos }}</div>
+    <div>{{ institucion.edEspecial }}</div>
+    <div>{{ institucion.edPermanente }}</div>
+    <div>{{ institucion.bachillerato }}</div>
+    <div>{{ institucion.humanistico }}</div>
+    <div>{{ institucion.tecnico }}</div>
+    <div>{{ institucion.siglas }}</div>
+    <div>{{ institucion.latitud }}</div>
+    <div>{{ institucion.longitud }}</div>
+    <div>{{ institucion.correo }}</div>
+    <div>{{ institucion.telefono1 }}</div>
+    <div>{{ institucion.telefono2 }}</div>
+    <div>{{ institucion.celular1 }}</div>
+    <div>{{ institucion.celular2 }}</div>
+    <div>{{ institucion.web }}</div>
+    <div>{{ institucion.descripcion }}</div>
+    <div>{{ institucion.lugarRecepcion }}</div>
+    <div>{{ institucion.fechaRecepcion }}</div>
+
+    
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>
+
+ 

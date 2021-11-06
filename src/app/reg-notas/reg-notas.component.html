@@ -1,0 +1,14 @@
+<ng-container *ngIf="(notas | async) as notas; else loading">
+
+    <h1>{{ notas.fecha }}</h1>
+    <div>{{ notas.descripcion }}</div>
+    <div>{{ notas.idCurso }}</div>
+    <div>{{ notas.idPeriodo }}</div>
+    <div>{{ notas.idMateria }}</div>
+    <div>{{ notas.idCategoria }}</div>
+    <div>{{ notas.idEstudiante }}</div>
+    <div>{{ notas.idRef }}</div>
+    <div>{{ notas.nota }}</div>
+    
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

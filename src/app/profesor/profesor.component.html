@@ -1,0 +1,18 @@
+<ng-container *ngIf="(profesor | async) as profesor; else loading">
+    <h1>{{ profesor.cedulaIdentidad }}</h1>
+    <h1>{{ profesor.apPaterno }}</h1>
+    <div>{{ profesor.apMaterno }}</div>
+    <div>{{ profesor.nombres }}</div>
+    <div>{{ profesor.sexo }}</div>
+    <div>{{ profesor.rda }}</div>
+    <div>{{ profesor.cas }}</div>
+    <div>{{ profesor.tituloProvNacional }}</div>
+    <div>{{ profesor.tituloProfesional }}</div>
+    <div>{{ profesor.posgrado }}</div>
+    <div>{{ profesor.idiomaFrecuente }}</div>
+    <div>{{ profesor.telefono }}</div>
+    <div>{{ profesor.celular }}</div>
+    <div>{{ profesor.correo }}</div>
+
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

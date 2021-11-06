@@ -1,0 +1,46 @@
+<form (ngSubmit)="save()" [formGroup]="form" #formDir="ngForm"  novalidate>
+    <br><br><mat-card class="example-card">
+    
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Autoevaluacion</mat-card-title>
+          <mat-card-subtitle>Detalle</mat-card-subtitle>
+        </mat-card-header>
+    
+            <br><mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="NotaSer">Nota Ser</mat-label>
+                <input matInput formControlName="notaSer" type="number" placeholder="Ex. Figueroa">
+            </mat-form-field>
+            <mat-error *ngIf="notaSer.invalid && formDir.submitted">Nota ser requerido.</mat-error>
+
+            <br><mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="NotaDecidir">Nota decidir</mat-label>
+                <input matInput formControlName="notaDecidir" type="number" placeholder="Ex. Figueroa">
+            </mat-form-field>
+            <mat-error *ngIf="notaDecidir.invalid && formDir.submitted">Nota decidir requerido.</mat-error>
+
+            <div class="form-group col-md-8">
+                <label class="control-label col-md-12" >Id evaluación poseedora:</label>
+                <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04)"   formControlName="idEvalPoseedor">
+                    <option value="{{ obj.id }}" *ngFor="let obj of listaSelect">{{ obj.id + ":" + " " + obj.descripcion }}</option>
+                </select>
+                <span class="text-danger ml-3" *ngIf="idEvalPoseedor.invalid && formDir.submitted">Id evaluación poseedora requerido</span>
+            </div>
+    
+        <br><mat-divider inset></mat-divider>
+
+        <mat-card-actions>
+          <button mat-button type="submit" class="btn btn-success float-right">GUARDAR</button>
+        </mat-card-actions><br>
+
+        <mat-card-content><br>
+          <p>The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p><br>
+        </mat-card-content>
+    
+        <mat-divider inset></mat-divider>
+    
+      </mat-card>
+    </form><br><br>

@@ -1,0 +1,39 @@
+<h1>Notas</h1>
+<p *ngIf="!notasLista"><em>Cargando..!</em></p>
+<p>
+    <a [routerLink]="['/addNota']" class="btn btn-primary float-right mb-3">Nueva nota</a>
+</p>
+<table class="table table-responsive table-hover" *ngIf="(notasLista)?.length>0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>descripcion</th>
+            <th>fecha</th>
+            <th>nota</th>
+            <th>descripcion</th>
+            <th>idCurso</th>
+            <th>idPeriodo</th>
+            <th>idMateria</th>
+            <th>idCategoria</th>
+            <th>idRef</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody>
+    <tr *ngFor="let nota of notasLista">
+        <td>{{ nota.id }}</td>
+        <td><a [routerLink]="['/nota/', nota.Id]">{{nota.descripcion}}</a></td>
+        <td>{{ nota.fecha }}</td>
+        <td>{{ nota.nota1 }}</td>
+        <td>{{ nota.descripcion }}</td>
+        <td>{{ nota.idCurso }}</td>
+        <td>{{ nota.idPeriodo }}</td>
+        <td>{{ nota.idMateria }}</td>
+        <td>{{ nota.idCategoria }}</td>
+        <td>{{ nota.idRef }}</td>
+        <td><a [routerLink]="['/nota/edit/', nota.id]" class="btn btn-primary btn-sm float-right">Editar</a></td>
+        <td><a [routerLink]="" (click)="delete(nota.id)" class="btn btn-danger btn-sm float-right">Eliminar</a></td>
+    </tr>
+</tbody>
+</table> 

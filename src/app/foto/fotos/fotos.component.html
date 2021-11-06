@@ -1,0 +1,27 @@
+<h1>FOTOS</h1>
+<p *ngIf="!fotosLista"><em>Cargando..!</em></p>
+<p>
+    <a [routerLink]="['/addFotos']" class="btn btn-primary float-right mb-3">Nueva foto</a>
+</p>
+<table class="table table-responsive table-hover" *ngIf="(fotosLista)?.length>0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Descripcion</th>
+            <th>Imagen</th>
+            <th>Id estudiante</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody>
+    <tr *ngFor="let foto of fotosLista">
+        <td>{{ foto.id }}</td>
+        <td><a [routerLink]="['/fotos/', foto.Id]">{{foto.descripcion}}</a></td>
+        <td>{{ foto.pathImg }}</td>
+        <td>{{ foto.idEstudiante }}</td>
+        <td><a [routerLink]="['/fotos/edit/', foto.id]" class="btn btn-primary btn-sm float-right">Editar</a></td>
+        <td><a [routerLink]="" (click)="delete(foto.id)" class="btn btn-danger btn-sm float-right">Eliminar</a></td>
+    </tr>
+</tbody>
+</table> 

@@ -1,0 +1,12 @@
+<ng-container *ngIf="(administrador | async) as administrador; else loading">
+    <h1>{{ administrador.cedulaIdentidad }}</h1>
+    <h1>{{ administrador.apPaterno }}</h1>
+    <div>{{ administrador.apMaterno }}</div>
+    <div>{{ administrador.nombres }}</div>
+    <div>{{ administrador.sexo }}</div>
+    <div>{{ administrador.telefono }}</div>
+    <div>{{ administrador.celular }}</div>
+    <div>{{ administrador.correo }}</div>
+
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

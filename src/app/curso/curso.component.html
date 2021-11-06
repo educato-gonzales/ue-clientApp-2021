@@ -1,0 +1,11 @@
+<ng-container *ngIf="(curso | async) as curso; else loading">
+
+    <h1>{{ curso.nombre }}</h1>
+    <div>{{ curso.nivel }}</div>
+    <div>{{ curso.turno }}</div>
+    <div>{{ curso.descripcion }}</div>
+    <div>{{ curso.idRef }}</div>
+    <div>{{ curso.idParalelo }}</div>
+    
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

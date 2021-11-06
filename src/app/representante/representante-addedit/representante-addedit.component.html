@@ -1,0 +1,138 @@
+<h1>{{actionType}} Representante</h1>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="CedulaIdentidad">CI:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="cedulaIdentidad">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="cedulaIdentidad.invalid && formDir.submitted">
+            CI del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Complemento">Complemento:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="complemento">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="complemento.invalid && formDir.submitted">
+            Complemento del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Expedido">Expedido:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="expedido">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="expedido.invalid && formDir.submitted">
+            Expedido del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="ApPaterno">ApPaterno:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="apPaterno">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="apPaterno.invalid && formDir.submitted">
+            ApPaterno del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="ApMaterno">ApMaterno:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="apMaterno">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="apMaterno.invalid && formDir.submitted">
+            ApMaterno del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Nombres">Nombres:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="nombres">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="nombres.invalid && formDir.submitted">
+            Nombres del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="IdiomaFrecuente">IdiomaFrecuente:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="idiomaFrecuente">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="idiomaFrecuente.invalid && formDir.submitted">
+            IdiomaFrecuente del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="OcupacionLaboral">OcupacionLaboral:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="ocupacionLaboral">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="ocupacionLaboral.invalid && formDir.submitted">
+            OcupacionLaboral del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="GradoInstruccion">GradoInstruccion:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="gradoInstruccion">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="gradoInstruccion.invalid && formDir.submitted">
+            GradoInstruccion del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="FechaNacimiento">FechaNacimiento:</label>
+        <div class="col-md-12">
+            <input type="date" class="form-control" formControlName="fechaNacimiento">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="fechaNacimiento.invalid && formDir.submitted">
+            FechaNacimiento del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Parentesco">Parentesco:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="parentesco">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="parentesco.invalid && formDir.submitted">
+            Parentesco del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Telefono">Telefono:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="telefono">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="telefono.invalid && formDir.submitted">
+            Telefono del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Celular">Celular:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="celular">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="celular.invalid && formDir.submitted">
+            Celular del representante requerido.
+        </span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success float-right">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </div>
+</form>

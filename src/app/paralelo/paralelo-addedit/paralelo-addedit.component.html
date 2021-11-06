@@ -1,0 +1,18 @@
+<form class="example-form" [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+    <br><br>
+    <table class="example-full-width" cellspacing="0"><tr>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="Nombre">Nombre:</mat-label>
+                <input matInput type="time" formControlName="nombre">
+        </mat-form-field>
+        <mat-error *ngIf="nombre.invalid && formDir.submitted">Nombre requerido.</mat-error>
+    </tr></table>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success float-right">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </div>
+    <br><br><br>
+    
+</form>

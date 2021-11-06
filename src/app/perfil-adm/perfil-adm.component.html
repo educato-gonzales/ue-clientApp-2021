@@ -1,0 +1,264 @@
+<!--<br> <br>
+<form [formGroup]="form" novalidate>
+    
+<mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" [formGroup]="form"  #formDir="ngForm" hideToggle>
+       
+        <mat-expansion-panel-header>
+        <mat-panel-title>DATOS DE USUARIO</mat-panel-title>
+        <mat-panel-description>Ex. Apellidos, Nombres, Fecha de nacimiento<mat-icon>account_circle</mat-icon></mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+          <mat-label for="Nombre">Nombre</mat-label>
+          <input matInput formControlName="nombre" placeholder="Ex. Habilitado">
+          </mat-form-field>
+          <mat-error *ngIf="nombre.invalid && formDir.submitted">
+              Nombre del usuario requerido.
+          </mat-error>
+          
+  
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="Clave" >Clave</mat-label>
+            <input matInput type="password" formControlName="clave">
+          </mat-form-field>
+          <mat-error *ngIf="clave.invalid && formDir.submitted">
+              Clave del usuario requerido.
+          </mat-error>
+  
+          <td><mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="Estado">Estado</mat-label>
+                <input matInput type="text" formControlName="estado" placeholder="Ex. 1" >
+            </mat-form-field>
+            <mat-error *ngIf="estado.invalid && formDir.submitted">
+                Id de Estado del usuario requerido.
+            </mat-error></td>
+    
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="Entidad">Entidad</mat-label>
+                <input matInput type="text" formControlName="entidad" placeholder="Ex. 1" >
+            </mat-form-field>
+            <mat-error *ngIf="entidad.invalid && formDir.submitted">
+                Id de Entidad del usuario requerido.
+            </mat-error>
+  
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label for="IdRef">Referencia</mat-label>
+                  <input matInput type="number" formControlName="idRef" placeholder="Ex. 1" >
+              </mat-form-field>
+              <mat-error *ngIf="idRef.invalid && formDir.submitted">
+                  Id de Referencia del usuario requerido.
+              </mat-error></td>
+                 
+              <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Rol</mat-label>
+              <mat-select formControlName="idRol">
+                  <mat-option value="{{ obj.id }}" *ngFor="let obj of listaSelect">{{ obj.nombre }}</mat-option>
+              </mat-select>
+              </mat-form-field>
+              <mat-error *ngIf="idRol.invalid && formDir.submitted">
+                  Rol requerido
+              </mat-error>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle> 
+        <mat-expansion-panel-header>
+          <mat-panel-title>DATOS ADMINISTRADOR</mat-panel-title>
+          <mat-panel-description>Ex. Curso, Gestión escolar<mat-icon>account_circle</mat-icon></mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+          <mat-label for="CedulaIdentidad">Cedula de Identidad</mat-label>
+              <input matInput formControlName="cedulaIdentidad" placeholder="Ex. 10664536">
+          </mat-form-field>
+          <mat-error *ngIf="cedulaIdentidad.invalid && formDir.submitted">Cedula Identidad del administrador requerido.</mat-error>
+      
+          <br><sub>APELLIDO(S) Y NOMBRE(S)</sub><br><br>
+          <mat-form-field class="example-full-width"  appearance="fill">
+          <mat-label for="ApPaterno">Apellido Paterno</mat-label>
+              <input matInput formControlName="apPaterno" placeholder="Ex. Gonzales">
+          </mat-form-field>
+          <mat-error *ngIf="apPaterno.invalid && formDir.submitted">Apellido Paterno del administrador requerido.</mat-error>
+      
+          <mat-form-field class="example-full-width"  appearance="fill">
+          <mat-label for="ApMaterno">Apellido Materno</mat-label>
+              <input matInput formControlName="apMaterno" placeholder="Ex. Figueroa">
+          </mat-form-field>
+          <mat-error *ngIf="apMaterno.invalid && formDir.submitted">Apellido Materno del administrador requerido.</mat-error>
+           
+          <mat-form-field class="example-full-width"  appearance="fill">
+          <mat-label for="Nombres">Nombres</mat-label>
+              <input matInput formControlName="nombres" placeholder="Ex. Claudia Jerissa">
+          </mat-form-field>
+          <mat-error *ngIf="nombres.invalid && formDir.submitted">Nombres del administrador requerido.</mat-error>   
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Sexo</mat-label>
+            <mat-select  formControlName="sexo">
+                <mat-option value="1">Femenino</mat-option>
+                <mat-option value="0">Masculino</mat-option>
+              </mat-select>
+            <span class="text-danger ml-3" *ngIf="sexo.invalid && formDir.submitted">Sexo del administrador requerido</span>
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label  for="Telefono">Telefono</mat-label>
+            <span matPrefix>+466 &nbsp;</span>
+            <input type="tel" matInput  formControlName="telefono" placeholder="52733">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+          <mat-error *ngIf="telefono.invalid && formDir.submitted">Telefono del estudiante requerido.</mat-error>
+    
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label  for="Celular">Celular</mat-label>
+            <span matPrefix>+591 &nbsp;</span>
+            <input type="tel" matInput  formControlName="celular" placeholder="78704214">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+          <mat-error *ngIf="celular.invalid && formDir.submitted">Celular del estudiante requerido.</mat-error>
+      
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label  for="Correo">Email</mat-label>
+            <input type="email" matInput formControlName="correo" placeholder="Ex. pat@example.com">
+            <mat-error *ngIf="correo.hasError('email') && !correo.hasError('required')">Por favor ingrese un email válido</mat-error>
+            <mat-error *ngIf="correo.invalid && formDir.submitted">Email del profesor requerido.</mat-error>
+        </mat-form-field>
+        
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">End</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <br><br>
+    <mat-card-actions> 
+        <button mat-button type="submit" (click)="save();saveAdm()" class="btn btn-success float-right">Guardar</button>
+        <button mat-button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </mat-card-actions>
+  
+  </mat-accordion>
+
+ </form><br><br> -->
+
+<div class="w3-container">
+  <br>
+  <div class="w3-card-4 w3-dark-grey" style="width:50%; max-width: 500px; margin: auto;">
+    <div class="w3-container w3-center">
+      <h3>Perfil</h3>
+      <img src="https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600070/29035232-hombre-silueta-avatar-icono-de-foto-de-perfil-en-c%C3%ADrculo-azul.jpg?ver=6" alt="Avatar" style="width:80%">
+      <h5>John Doe</h5>
+      <div class="w3-section">
+        <button class="w3-button w3-green" onclick="document.getElementById('id01').style.display='block'">Configurar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="w3-container">
+  <div id="id01" class="w3-modal">
+   <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+    <header class="w3-container w3-red"> 
+     <span onclick="document.getElementById('id01').style.display='none'" 
+     class="w3-button w3-red w3-xlarge w3-display-topright">&times;</span>
+     <h2>EDITAR PERFIL</h2>
+    </header>
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Usuario">
+
+          <form class="w3-container w3-card-4 w3-light-grey w3-text-red w3-margin" [formGroup]="form" (ngSubmit)='saveUsuario()' #formDir="ngForm">
+            <h2 class="w3-center">Datos de Usuario</h2>
+
+            <mat-form-field class="example-full-width"  appearance="fill">
+              <mat-label for="Nombre">Nombre</mat-label>
+                <input matInput formControlName="nombre" placeholder="Ex. Habilitado">
+            </mat-form-field>
+            <mat-error *ngIf="nombre.invalid && formDir.submitted">Nombre del usuario requerido.</mat-error>
+            
+            <br><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label for="Clave" >Clave actual</mat-label>
+              <input matInput type="password" formControlName="clave">
+            </mat-form-field>
+            <span class="text-danger ml-3" *ngIf="clave.invalid && formDir.submitted">Ingrese clave actual</span>
+
+            <br><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label for="ClaveNueva" >Clave nueva</mat-label>
+              <input matInput type="password" formControlName="claveNueva">
+            </mat-form-field>
+            <span class="text-danger ml-3" *ngIf="claveNueva.invalid && formDir.submitted">Ingrese clave nueva</span>
+
+              <button type="submit" class="w3-button w3-block w3-section w3-red w3-ripple w3-padding">Modificar</button>
+          </form>
+
+      </mat-tab>
+
+      <mat-tab label="Administrador">
+        <form  class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin" [formGroup]="form" (ngSubmit)='saveDatosPersonales()' #formDir="ngForm" novalidate>
+            <h2 class="w3-center">Datos Personales</h2>
+
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="CedulaIdentidad">Cedula de Identidad</mat-label>
+                <input matInput formControlName="cedulaIdentidad" placeholder="Ex. 10664536">
+            </mat-form-field>
+            <mat-error *ngIf="cedulaIdentidad.invalid && formDir.submitted">Cedula Identidad del administrador requerido.</mat-error>
+        
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="ApPaterno">Apellido Paterno</mat-label>
+                <input matInput formControlName="apPaterno" placeholder="Ex. Gonzales">
+            </mat-form-field>
+            <mat-error *ngIf="apPaterno.invalid && formDir.submitted">Apellido Paterno del administrador requerido.</mat-error>
+        
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="ApMaterno">Apellido Materno</mat-label>
+                <input matInput formControlName="apMaterno" placeholder="Ex. Figueroa">
+            </mat-form-field>
+            <mat-error *ngIf="apMaterno.invalid && formDir.submitted">Apellido Materno del administrador requerido.</mat-error>
+            
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="Nombres">Nombres</mat-label>
+                <input matInput formControlName="nombres" placeholder="Ex. Claudia Jerissa">
+            </mat-form-field>
+            <mat-error *ngIf="nombres.invalid && formDir.submitted">Nombres del administrador requerido.</mat-error>   
+        
+            <mat-form-field appearance="fill">
+              <mat-label>Sexo</mat-label>
+              <mat-select  formControlName="sexo">
+                  <mat-option value="1">Femenino</mat-option>
+                  <mat-option value="0">Masculino</mat-option>
+                </mat-select>
+              <span class="text-danger ml-3" *ngIf="sexo.invalid && formDir.submitted">Sexo del administrador requerido</span>
+            </mat-form-field>
+      
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label  for="Telefono">Telefono</mat-label>
+              <span matPrefix>+466 &nbsp;</span>
+              <input type="tel" matInput  formControlName="telefono" placeholder="52733">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+            <mat-error *ngIf="telefono.invalid && formDir.submitted">Telefono del estudiante requerido.</mat-error>
+      
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label  for="Celular">Celular</mat-label>
+              <span matPrefix>+591 &nbsp;</span>
+              <input type="tel" matInput  formControlName="celular" placeholder="78704214">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+            <mat-error *ngIf="celular.invalid && formDir.submitted">Celular del estudiante requerido.</mat-error>
+        
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label  for="Correo">Email</mat-label>
+              <input type="email" matInput formControlName="correo" placeholder="Ex. pat@example.com">
+              <mat-error *ngIf="correo.hasError('email') && !correo.hasError('required')">Por favor ingrese un email válido</mat-error>
+              <mat-error *ngIf="correo.invalid && formDir.submitted">Email del profesor requerido.</mat-error>
+            </mat-form-field>
+             
+            
+            <button class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding">Guardar</button>
+            </form>
+    </mat-tab>
+  </mat-tab-group>
+ </div>
+</div>
+</div>

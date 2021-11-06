@@ -1,0 +1,31 @@
+<h1>NOTIFICACIONES</h1>
+<p *ngIf="!notificacionesLista"><em>Cargando..!</em></p>
+<p>
+    <a [routerLink]="['/addNotificacion']" class="btn btn-primary float-right mb-3">Nueva notificacion</a>
+</p>
+<table class="table table-responsive table-hover" *ngIf="(notificacionesLista)?.length>0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>descripcion</th>
+            <th>fecha</th>
+            <th>idCurso</th>
+            <th>idProfesor</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody>
+    <tr *ngFor="let notificacion of notificacionesLista">
+        <td>{{ notificacion.id }}</td>
+        <td><a [routerLink]="['/notificacion/', notificacion.Id]">{{notificacion.nombre}}</a></td>
+        <td>{{ notificacion.descripcion }}</td>
+        <td>{{ notificacion.fecha }}</td>
+        <td>{{ notificacion.idCurso }}</td>
+        <td>{{ notificacion.idProfesor }}</td>
+        <td><a [routerLink]="['/notificacion/edit/', notificacion.id]" class="btn btn-primary btn-sm float-right">Editar</a></td>
+        <td><a [routerLink]="" (click)="delete(notificacion.id)" class="btn btn-danger btn-sm float-right">Eliminar</a></td>
+    </tr>
+</tbody>
+</table> 

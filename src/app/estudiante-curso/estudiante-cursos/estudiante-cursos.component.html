@@ -1,0 +1,52 @@
+<br><br>
+
+<div class="form-group col-md-8" [formGroup]="form" #formDir="ngForm">
+  <label class="control-label col-md-12">Burscar curso:</label>
+  <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04); width: 48%"  formControlName="idCurso" (click)="buscar(idCurso.value)">
+      <option value="{{ obj.id }}" *ngFor="let obj of listaSelectCurso">{{ obj.nombre }}</option>
+  </select>
+  <span class="text-danger ml-3" *ngIf="idCurso.invalid && formDir.submitted">Curso requerido</span>
+</div>
+
+<p><a [routerLink]="['/addEstudianteCurso']" class="btn btn-primary float-right mb-3">Nuevo</a></p>
+
+<mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Administrador" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Nº </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="idCurso">
+        <th mat-header-cell *matHeaderCellDef> Curso </th>
+        <td mat-cell *matCellDef="let element"> {{element.idCurso}} </td>
+      </ng-container>
+      <ng-container matColumnDef="idEstudiante">
+        <th mat-header-cell *matHeaderCellDef> Estudiante </th>
+        <td mat-cell *matCellDef="let element"> {{element.idEstudiante}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef>  Editar </th>
+        <td mat-cell *matCellDef="let element"><a [routerLink]="['/estudianteCurso/edit/', element.id]" class="btn btn-primary btn-sm float-right">Editar</a>  </td>
+      </ng-container>
+
+      <ng-container matColumnDef="eliminar">
+        <th mat-header-cell *matHeaderCellDef>  Eliminar </th>
+        <td mat-cell *matCellDef="let element"><a [routerLink]="" (click)="delete(element.id)" class="btn btn-danger btn-sm float-right" >Eliminar</a></td>
+      </ng-container>
+
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <br><br><br><br><mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+   
+    
+</div> <br><br><br>

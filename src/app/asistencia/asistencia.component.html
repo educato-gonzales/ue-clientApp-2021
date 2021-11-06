@@ -1,0 +1,13 @@
+<ng-container *ngIf="(asistencia | async) as asistencia; else loading">
+
+    <h1>{{ asistencia.fecha }}</h1>
+    <div>{{ asistencia.estado }}</div>
+    <div>{{ asistencia.descripcion }}</div>
+    <div>{{ asistencia.idCurso }}</div>
+    <div>{{ asistencia.idEstudiante }}</div>
+    <div>{{ asistencia.idMateria }}</div>
+    <div>{{ asistencia.idPeriodo }}</div>
+    
+</ng-container>
+
+ <ng-template #loading>Cargando..!</ng-template> 

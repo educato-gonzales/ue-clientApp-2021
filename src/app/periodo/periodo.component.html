@@ -1,0 +1,10 @@
+<ng-container *ngIf="(periodo | async) as periodo; else loading">
+
+    <h1>{{ periodo.nombre }}</h1>
+    <div>{{ periodo.fechaInicio }}</div>
+    <div>{{ periodo.fechaFin }}</div>
+    <div>{{ periodo.estado }}</div>
+    <div>{{ periodo.descripcion }}</div>
+
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

@@ -1,0 +1,8 @@
+<ng-container *ngIf="(foto | async) as foto; else loading">
+
+    <h1>{{ foto.descripcion }}</h1>
+    <div>{{ foto.pathImg }}</div>
+    <div>{{ foto.idEstudiante }}</div>
+    
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

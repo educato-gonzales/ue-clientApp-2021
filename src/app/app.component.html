@@ -1,0 +1,76 @@
+<mat-toolbar color="primary">
+  <a class="navbar-brand"  style="color: #fff;" href="/inicio">COLEGIO</a>
+
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" routerLinkActive="active" routerLink="/perfil-administrador" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" routerLinkActive="active" routerLink="/registrarse">
+    <mat-icon>person_add</mat-icon>
+  </button>
+    
+    
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item class="nav-link" *ngIf="!_authService.loggedIn()" routerLinkActive="active" routerLink="/ingresar">
+      <mat-icon>dialpad</mat-icon>
+      <span>Ingresar</span>
+    </button>
+
+  <!-- <button mat-menu-item disabled> -->
+    <button mat-menu-item [matMenuTriggerFor]="menuPrincipal">
+      <mat-icon>voicemail</mat-icon>
+      <span>Menu</span>
+    </button>
+    
+    <mat-menu #menuPrincipal="matMenu" >
+      <!-- Funcionalidades -->
+      <a mat-menu-item class="nav-link"  [routerLink]="['/registro-estudiante-nuevo']" routerLinkActive="router-link-active">ESTUDIANTE</a>
+      <a mat-menu-item class="nav-link" *ngIf="_authService.loggedIn()" [routerLink]="['/inicioProfesor']" routerLinkActive="router-link-active">PROFESOR</a>
+      <a mat-menu-item class="nav-link" *ngIf="_authService.loggedIn()" [routerLink]="['/inicioRepresentante']" routerLinkActive="router-link-active">REPRESENTANTE</a>
+      <a mat-menu-item class="nav-link" *ngIf="_authService.loggedIn()" [routerLink]="['/inicioAdministrador']" routerLinkActive="router-link-active">ADMINISTRADOR</a>
+      <a mat-menu-item class="nav-link"  [routerLink]="['/registro-rude']" routerLinkActive="router-link-active">RUDE</a>
+      <a mat-menu-item class="nav-link"  [routerLink]="['/addInstitucion']" routerLinkActive="router-link-active">INSTITUCION</a>
+      <a mat-menu-item class="nav-link"  [routerLink]="['/registro-nota']" routerLinkActive="router-link-active">NOTAS</a>
+      <a mat-menu-item class="nav-link"  [routerLink]="['/asignarHorario']" routerLinkActive="router-link-active">CURSO</a>
+      <a mat-menu-item class="nav-link"  [routerLink]="['/materiaDictadas']" routerLinkActive="router-link-active">HORARIO PROFESOR</a>
+      <a mat-menu-item class="nav-link"  [routerLink]="['/asistenciaEstudiantes']" routerLinkActive="router-link-active">ASISTENCIA</a>
+      <a mat-menu-item class="nav-link" *ngIf="_authService.loggedIn()" [routerLink]="['/inicioCurso']" routerLinkActive="router-link-active">REGISTROS</a>
+      <a mat-menu-item class="nav-link"  [routerLink]="['/perfilAdministrador']" routerLinkActive="router-link-active">PERFIL ADMINISTRADOR</a>
+
+
+      <a mat-menu-item class="nav-link"  [routerLink]="['/perfil-usuario']" routerLinkActive="router-link-active">Perfil usuario</a>
+      <a mat-menu-item class="nav-link"  [routerLink]="['/perfil-administrador']" routerLinkActive="router-link-active">Perfil administrador</a>
+      <a mat-menu-item class="nav-link"  [routerLink]="['/estudianteCurso']" routerLinkActive="router-link-active">Listas de Estudiantes</a>
+      <a mat-menu-item class="nav-link"  [routerLink]="['/calendario-vista']" routerLinkActive="router-link-active">Calendario Vista</a>
+      <a mat-menu-item class="nav-link" *ngIf="_authService.loggedIn()" [routerLink]="['/calendario']" routerLinkActive="router-link-active">Calendarios</a>
+
+      <a mat-menu-item class="nav-link" *ngIf="_authService.loggedIn()" [routerLink]="['/estudianteMateria']" routerLinkActive="router-link-active">Estudiantes - Materias</a>
+      <a mat-menu-item class="nav-link" *ngIf="_authService.loggedIn()" [routerLink]="['/notificacion']" routerLinkActive="router-link-active">Notificacion</a>
+      
+
+      
+    </mat-menu>
+
+
+    <button mat-menu-item class="nav-link" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">
+      <mat-icon>notifications_off</mat-icon>
+      <span>Salir</span>
+    </button>
+  </mat-menu>
+
+</mat-toolbar>
+
+
+<div class="container">  
+  <router-outlet></router-outlet>
+</div>
+
+

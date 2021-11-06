@@ -1,0 +1,36 @@
+<br><br>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="Sigla">Sigla</mat-label>
+        <input matInput formControlName="sigla">
+    </mat-form-field>
+    <mat-error *ngIf="sigla.invalid && formDir.submitted">Sigla de la materia requerida.</mat-error>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="Nombre">Nombre</mat-label>
+        <input matInput formControlName="nombre">
+    </mat-form-field>
+    <mat-error *ngIf="nombre.invalid && formDir.submitted">Nombre de la materia requerida.</mat-error>
+
+    <br><mat-form-field appearance="fill">
+        <mat-label for="Nombre">Nivel:</mat-label>
+        <mat-select  formControlName="nivel">
+            <mat-option value="Inicial">Inicial</mat-option>
+            <mat-option value="Primaria">Primaria</mat-option>
+            <mat-option value="Secundaria">Secundaria</mat-option>
+        </mat-select>
+        <span class="text-danger ml-3" *ngIf="nivel.invalid && formDir.submitted">Nivel requerido</span>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="Descripcion" >Descripcion</mat-label>
+        <textarea matInput formControlName="descripcion"></textarea>
+    </mat-form-field>
+    <mat-error *ngIf="descripcion.invalid && formDir.submitted">Descripcion de la materia requerida.</mat-error>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success float-right">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </div>
+</form>

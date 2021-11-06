@@ -1,0 +1,100 @@
+<br><br><h1> Registro notas</h1>
+<form class="example-form" [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+
+        <div class="form-group" >
+            <label class="control-label col-md-12">Curso</label>
+            <select class="form-control"  style="background-color: rgba(0, 0, 0, 0.04)" formControlName="idCurso" (click)="buscar(idCurso.value)">
+                <option value="{{ obj.id }}" *ngFor="let obj of listaSelectCurso">{{"Turno:" + " " + obj.turno + " " + "-" +" "+obj.nombre + " "+ obj.nivel}}</option>
+            </select>
+            <span class="text-danger ml-3" *ngIf="idCurso.invalid && formDir.submitted">Curso requerido</span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-12" >Periodo</label>
+            <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04)" formControlName="idPeriodo">
+                <option value="{{ obj.id }}" *ngFor="let obj of listaSelectPeriodo">{{ obj.nombre }}</option>
+            </select>
+            <span class="text-danger ml-3" *ngIf="idPeriodo.invalid && formDir.submitted">Periodo requerido</span>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label col-md-12" >Materia</label>
+            <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04)"  formControlName="idMateria">
+                <option value="{{ obj.id }}" *ngFor="let obj of listaSelectMateria">{{obj.nombre + " "+ "-"+  " "+obj.sigla}}</option>
+            </select>
+            <span class="text-danger ml-3" *ngIf="idMateria.invalid && formDir.submitted">Materia requerido</span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-12" >Categoria</label>
+            <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04)"  formControlName="idCategoria">
+                <option value="{{ obj.id }}" *ngFor="let obj of listaSelectCategoria">{{ obj.nombre }}</option>
+            </select>
+            <span class="text-danger ml-3" *ngIf="idCategoria.invalid && formDir.submitted">Categoria requerido</span>
+        </div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="Descripcion" >Descripcion</mat-label>
+            <textarea matInput formControlName="descripcion"></textarea>
+        </mat-form-field>
+        <mat-error *ngIf="descripcion.invalid && formDir.submitted">
+            Descripcion del rol requerido.
+        </mat-error>
+
+        <div class="form-group">
+            <label class="control-label col-md-12" >Estudiante</label>
+            <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04)"  formControlName="idEstudiante">
+                <option value="{{ obj.id }}" *ngFor="let obj of listaSelectEstudiante">{{ obj.nombres + " " + obj.apPaterno + " " + obj.apMaterno }}</option>
+            </select>
+            <span class="text-danger ml-3" *ngIf="idEstudiante.invalid && formDir.submitted">Estudiante requerido</span>
+        </div>
+
+    </tr></table><br><br><br>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+      
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Nº </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+          <ng-container matColumnDef="idCurso">
+            <th mat-header-cell *matHeaderCellDef> Curso </th>
+            <td mat-cell *matCellDef="let element"> {{element.idCurso}} </td>
+          </ng-container>
+          <ng-container matColumnDef="idEstudiante">
+            <th mat-header-cell *matHeaderCellDef> Estudiante </th>
+            <td mat-cell *matCellDef="let element"> {{element.idEstudiante}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="nota">
+            <th mat-header-cell *matHeaderCellDef>  Nota </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-form-field class="example-full-width" style="width: 120px;"  appearance="fill">
+                    <mat-label for="Nota">Nota</mat-label>
+                    <input matInput formControlName="nota" type="number" placeholder="Ex. Figueroa">
+                </mat-form-field>
+                <mat-error *ngIf="nota.invalid && formDir.submitted">Nota requerido.</mat-error>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="calificar">
+            <th mat-header-cell *matHeaderCellDef>  Calificar </th>
+            <td mat-cell *matCellDef="let element"><a class="btn btn-secondary btn-sm float-right" data-toggle="modal" data-target="#myModal" (click)="estudiante(element.idEstudiante);save()">Calificar</a>  </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        </table>
+        <br><br><mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator><br>
+
+    </div> <br><br><br>
+
+    <div class="form-group">
+        <button class="btn btn-secondary float-left" routerLinkActive="active" routerLink="/inicio">Terminar</button>
+    </div><br><br><br>
+
+</form>

@@ -1,0 +1,7 @@
+<ng-container *ngIf="(parametro | async) as parametro; else loading">
+
+    <h1>{{ parametro.nombre }}</h1>
+    <div>{{ parametro.valor }}</div>
+
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

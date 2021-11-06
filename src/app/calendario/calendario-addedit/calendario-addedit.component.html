@@ -1,0 +1,58 @@
+<h1>{{actionType}} Calendario</h1>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Nombre">Nombre:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="nombre">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="nombre.invalid && formDir.submitted">
+            Nombre de actividad requerida.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Fecha">Fecha:</label>
+        <div class="col-md-12">
+            <input type="date" class="form-control" formControlName="fecha">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="fecha.invalid && formDir.submitted">
+            Fecha de actividad requerida.
+        </span>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Lugar">Lugar:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="lugar">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="lugar.invalid && formDir.submitted">
+            Lugar de actividad requerida.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Descripcion">Descripcion:</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName="descripcion">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="descripcion.invalid && formDir.submitted">
+            Descripcion de actividad requerida.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Id Periodo:</label>
+        <select class="form-control"  formControlName="idPeriodo">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelect">{{ obj.nombre }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idPeriodo.invalid && formDir.submitted">Id Periodo requerido</span>
+    </div>
+
+        
+    <div class="form-group">
+        <button type="submit" class="btn btn-success float-right">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </div>
+</form>

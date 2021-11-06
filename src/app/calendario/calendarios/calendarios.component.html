@@ -1,0 +1,31 @@
+<h1>CALENDARIO</h1>
+<p *ngIf="!calendariosLista"><em>Cargando..!</em></p>
+<p>
+    <a [routerLink]="['/addCalendario']" class="btn btn-primary float-right mb-3">Nuevo Calendario</a>
+</p>
+<table class="table table-responsive table-hover" *ngIf="(calendariosLista)?.length>0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Lugar</th>
+            <th>Descripcion</th>
+            <th>Id periodo</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody>
+    <tr *ngFor="let calendario of calendariosLista">
+        <td>{{ calendario.id }}</td>
+        <td><a [routerLink]="['/calendario/', calendario.Id]">{{calendario.nombre}}</a></td>
+        <td>{{ calendario.fecha  |date: "dd/MM/y"}}</td>
+        <td>{{ calendario.lugar }}</td>
+        <td>{{ calendario.descripcion }}</td>
+        <td>{{ calendario.idPeriodo }}</td>
+        <td><a [routerLink]="['/calendario/edit/', calendario.id]" class="btn btn-primary btn-sm float-right">Editar</a></td>
+        <td><a [routerLink]="" (click)="delete(calendario.id)" class="btn btn-danger btn-sm float-right">Eliminar</a></td>
+    </tr>
+</tbody>
+</table> 

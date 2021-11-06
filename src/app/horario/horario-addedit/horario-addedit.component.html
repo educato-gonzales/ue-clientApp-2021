@@ -1,0 +1,39 @@
+<form class="example-form" [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+    <br><br>
+    <table class="example-full-width" cellspacing="0"><tr>
+
+        <br><mat-form-field appearance="fill">
+            <mat-label for="Dia">D&iacute;a:</mat-label>
+            <mat-select  formControlName="dia">
+                <mat-option value="Lunes">Lunes</mat-option>
+                <mat-option value="Martes">Martes</mat-option>
+                <mat-option value="Miercoles">Miércoles</mat-option>
+                <mat-option value="Jueves">Jueves</mat-option>
+                <mat-option value="Viernes">Viernes</mat-option>
+                <mat-option value="Sabado">Sábado</mat-option>
+            </mat-select>
+            <span class="text-danger ml-3" *ngIf="dia.invalid && formDir.submitted">D&iacute;a requerido</span>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="HoraInicio">Hora inicio:</mat-label>
+                <input matInput type="time" formControlName="horaInicio">
+        </mat-form-field>
+        <mat-error *ngIf="horaInicio.invalid && formDir.submitted">Hora inicio requerido.</mat-error>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="HoraFin">Hora fin:</mat-label>
+                <input matInput type="time" formControlName="horaFin">
+        </mat-form-field>
+        <mat-error *ngIf="horaFin.invalid && formDir.submitted">Hora fin requerido.</mat-error>
+
+    </tr></table>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success float-right">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </div>
+    <br><br><br>
+    
+</form>

@@ -1,0 +1,8 @@
+<ng-container *ngIf="(rol | async) as rol; else loading">
+
+    <h1>{{ rol.nombre }}</h1>
+    <div>{{ rol.descripcion }}</div>
+    
+</ng-container>
+
+<ng-template #loading>Cargando..!</ng-template>

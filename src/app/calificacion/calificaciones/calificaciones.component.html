@@ -1,0 +1,44 @@
+
+<p *ngIf="!calificacionesLista"><em>Cargando..!</em></p>
+<p><a [routerLink]="['/addCalificacion/:ids']" class="btn btn-primary float-right mb-3">Nuevo</a></p>
+
+<mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Administrador" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Nº </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="nota">
+        <th mat-header-cell *matHeaderCellDef> Nota </th>
+        <td mat-cell *matCellDef="let element"> {{element.nota}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="idEstudiante">
+        <th mat-header-cell *matHeaderCellDef> Estudiante </th>
+        <td mat-cell *matCellDef="let element"> {{element.idEstudiante}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef>  Editar </th>
+        <td mat-cell *matCellDef="let element"><a [routerLink]="['/calificacion/edit/', element.id]" class="btn btn-primary btn-sm float-right">Editar</a>  </td>
+      </ng-container>
+
+      <ng-container matColumnDef="eliminar">
+        <th mat-header-cell *matHeaderCellDef>  Eliminar </th>
+        <td mat-cell *matCellDef="let element"><a [routerLink]="" (click)="delete(element.id)" class="btn btn-danger btn-sm float-right" >Eliminar</a></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <br><br><br><br><mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+
+</div> <br><br><br>

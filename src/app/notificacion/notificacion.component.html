@@ -1,0 +1,9 @@
+<ng-container *ngIf="(notificacion | async) as notificacion; else loading">
+
+    <h1>{{ notificacion.nombre }}</h1>
+    <div>{{ notificacion.descripcion }}</div>
+    <div>{{ notificacion.fecha }}</div>
+    <div>{{ notificacion.idCurso }}</div>
+    <div>{{ notificacion.idProfesor }}</div>
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

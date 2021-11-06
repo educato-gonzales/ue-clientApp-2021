@@ -1,0 +1,10 @@
+/* CARD */
+.example-card {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .example-header-image {
+    background-image: url('https://scontent.flpb1-1.fna.fbcdn.net/v/t1.18169-9/10253892_740502545980105_5202716938536227251_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=8631f5&_nc_ohc=_NPz8yuGoWAAX-EyH--&_nc_ht=scontent.flpb1-1.fna&oh=cfdc71c975b4ef6d3e3188025d0320f3&oe=61832224');
+    background-size: cover;
+  }

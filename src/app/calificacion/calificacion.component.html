@@ -1,0 +1,9 @@
+<ng-container *ngIf="(calificacion | async) as calificacion; else loading">
+
+    <h1>{{ calificacion.nota }}</h1>
+    <div>{{ calificacion.idEstudiante }}</div>
+    <div>{{ calificacion.idEvalposeedor }}</div>
+
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>
+

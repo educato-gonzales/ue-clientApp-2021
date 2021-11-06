@@ -1,0 +1,11 @@
+<ng-container *ngIf="(calendario | async) as calendario; else loading">
+
+    <h1>{{ calendario.nombre }}</h1>
+    <div>{{ calendario.fecha | date: "dd/MM/y" }}</div>
+    <div>{{ calendario.lugar }}</div>
+    <div>{{ calendario.descripcion }}</div>
+    <div>{{ calendario.idPeriodo }}</div>
+    
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>
+

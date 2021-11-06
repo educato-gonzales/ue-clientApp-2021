@@ -1,0 +1,9 @@
+<ng-container *ngIf="(materia | async) as materia; else loading">
+
+    <h1>{{ materia.sigla }}</h1>
+    <div>{{ materia.nombre }}</div>
+    <div>{{ materia.nivel }}</div>
+    <div>{{ materia.descripcion }}</div>
+    
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

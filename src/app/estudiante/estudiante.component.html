@@ -1,0 +1,14 @@
+<ng-container *ngIf="(estudiante | async) as estudiante; else loading">
+
+    <h1>{{ estudiante.apPaterno }}</h1>
+    <div>{{ estudiante.apMaterno }}</div>
+    <div>{{ estudiante.nombres }}</div>
+    <div>{{ estudiante.fechaNacimiento }}</div>
+    <div>{{ estudiante.cedulaIdentidad }}</div>
+    <div>{{ estudiante.telefono }}</div>
+    <div>{{ estudiante.celular }}</div>
+    <div>{{ estudiante.idPeriodo }}</div>
+
+    
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

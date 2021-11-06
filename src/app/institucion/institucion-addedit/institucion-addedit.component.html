@@ -1,0 +1,422 @@
+<br><br>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" [formGroup]="form"  #formDir="ngForm" hideToggle>
+   
+    <mat-expansion-panel-header>
+    <mat-panel-title>1. Identifiación</mat-panel-title>
+    <mat-panel-description>Ex. Código de UE, Nº de resolución<mat-icon>account_circle</mat-icon></mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field class="example-full-width"  appearance="fill">
+    <mat-label for="CodUe">1.1 Código de unidad educativa / centro educativo</mat-label>
+        <input matInput formControlName="codUe" placeholder="Ex. 85959">
+    </mat-form-field>
+    <mat-error *ngIf="codUe.invalid && formDir.submitted">Código de unidad educativa requerido.</mat-error>
+
+    <mat-form-field class="example-full-width"  appearance="fill">
+    <mat-label for="NombreUe">1.2 Nombre de la unidad educativa / Centro educativo</mat-label>
+        <input matInput formControlName="nombreUe" placeholder="Ex. Belgrano">
+    </mat-form-field>
+    <mat-error *ngIf="nombreUe.invalid && formDir.submitted">Nombre de la unidad educativa requerido.</mat-error>
+
+     <mat-form-field class="example-full-width"  appearance="fill">
+    <mat-label for="NumResolucionAdm1">1.3 Número de resolución administrativa</mat-label>
+        <input matInput type="number" formControlName="numResolucionAdm1" placeholder="Ex. Belgrano">
+    </mat-form-field>
+    <mat-error *ngIf="numResolucionAdm1.invalid && formDir.submitted">Número de resolución administrativa requerido.</mat-error>
+
+    <mat-form-field  appearance="fill">
+        <mat-label for="FechaResolucionAdm1">1.3.1 Fecha de resolución administrativa</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fechaResolucionAdm1" (focus)="picker.open()" readonly>
+        </mat-form-field>
+    <mat-datepicker #picker></mat-datepicker>
+
+    <!-- #docregion action-bar -->
+        <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+    <!-- #enddocregion action-bar -->
+        </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle> 
+        <mat-expansion-panel-header>
+          <mat-panel-title>2. Jurisdicción administrativa</mat-panel-title>
+          <mat-panel-description>Ex. Código distrito, Nombre de distrito<mat-icon>map</mat-icon></mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="CodDistritoEducativo">2.1 Código distrito educativo</mat-label>
+            <input matInput formControlName="codDistritoEducativo" placeholder="Ex. Gonzales">
+        </mat-form-field>
+        <mat-error *ngIf="codDistritoEducativo.invalid && formDir.submitted">Código distrito requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="NombreDistritoEducativo">2.2 Nombre de distrito educativo</mat-label>
+            <input matInput formControlName="nombreDistritoEducativo" placeholder="Ex. Figueroa">
+        </mat-form-field>
+        <mat-error *ngIf="nombreDistritoEducativo.invalid && formDir.submitted">Nombre de distrito requerido.</mat-error>
+         
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="NumResolucionAdm2">2.3 Número de resolución administrativa</mat-label>
+            <input matInput type="number" formControlName="numResolucionAdm2" placeholder="Ex. Claudia Jerissa">
+        </mat-form-field>
+        <mat-error *ngIf="numResolucionAdm2.invalid && formDir.submitted">Nº de resolución requerido.</mat-error>   
+
+        <mat-form-field  appearance="fill">
+            <mat-label for="FechaResolucionAdm2">2.3.1 Fecha de resolución administrativa</mat-label>
+                    <input matInput [matDatepicker]="picker2" formControlName="fechaResolucionAdm2" (focus)="picker2.open()" readonly>
+            </mat-form-field>
+        <mat-datepicker #picker2></mat-datepicker>
+
+        <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle> 
+        <mat-expansion-panel-header>
+          <mat-panel-title>3. Ubicación geográfica</mat-panel-title>
+          <mat-panel-description>Ex. Código de edificio escolar, Departamento<mat-icon>map</mat-icon></mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="CodEdificioEscolar">3.1 Código de edificio escolar</mat-label>
+            <input matInput formControlName="codEdificioEscolar" placeholder="Ex. Gonzales">
+        </mat-form-field>
+        <mat-error *ngIf="codEdificioEscolar.invalid && formDir.submitted">Código de edificio escolar requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="NuevoCodEdificioEscolar">3.1.1 Nuevo código de edificio escolar</mat-label>
+            <input matInput formControlName="nuevoCodEdificioEscolar" placeholder="Ex. Gonzales">
+        </mat-form-field>
+        <mat-error *ngIf="nuevoCodEdificioEscolar.invalid && formDir.submitted">Nuevo código de edificio escolar requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Departamento">3.2 Departamento</mat-label>
+            <input matInput formControlName="departamento" placeholder="Ex. Tarija">
+        </mat-form-field>
+        <mat-error *ngIf="departamento.invalid && formDir.submitted">Departamento requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Provincia">3.3 Provincia</mat-label>
+            <input matInput formControlName="provincia" placeholder="Ex. Cercado">
+        </mat-form-field>
+        <mat-error *ngIf="provincia.invalid && formDir.submitted">Provincia requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="SeccionMunicipal">3.4 Sección municipal</mat-label>
+            <input matInput formControlName="seccionMunicipal" placeholder="Ex. Figueroa">
+        </mat-form-field>
+        <mat-error *ngIf="seccionMunicipal.invalid && formDir.submitted">Sección municipal requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Canton">3.5 Cantón</mat-label>
+            <input matInput formControlName="canton" placeholder="Ex. Figueroa">
+        </mat-form-field>
+        <mat-error *ngIf="canton.invalid && formDir.submitted">Cantón requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Ciudad">3.6 Ciudad, localidad o comunidad</mat-label>
+            <input matInput formControlName="ciudad" placeholder="Ex. Figueroa">
+        </mat-form-field>
+        <mat-error *ngIf="ciudad.invalid && formDir.submitted"> Ciudad, localidad o comunidad requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Zona">3.7 Zona o Barrio</mat-label>
+            <input matInput formControlName="zona" placeholder="Ex. Figueroa">
+        </mat-form-field>
+        <mat-error *ngIf="zona.invalid && formDir.submitted">Zona o Barrio requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Direccion">3.8 Dirección</mat-label>
+            <input matInput formControlName="direccion" placeholder="Ex. Figueroa">
+        </mat-form-field>
+        <mat-error *ngIf="direccion.invalid && formDir.submitted">Dirección requerido.</mat-error>
+
+        <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle> 
+        <mat-expansion-panel-header>
+          <mat-panel-title>4. Dependencia</mat-panel-title>
+          <mat-panel-description>Ex. Pública<mat-icon>map</mat-icon></mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <br>4.1 Pública<br><br>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Estatal">4.1.1 Estatal o fiscal</mat-label>
+            <mat-select  formControlName="estatal">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="estatal.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="Convenio">4.1.2 Convenio</mat-label>
+                <mat-select  formControlName="convenio">
+                    <mat-option value="1">Si</mat-option>
+                    <mat-option value="0">No</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-error *ngIf="convenio.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="NombreInstitucion">Nombre de la institucion</mat-label>
+            <input matInput formControlName="nombreInstitucion" placeholder="Ex. Tarija">
+        </mat-form-field>
+        <mat-error *ngIf="nombreInstitucion.invalid && formDir.submitted">Nombre de la institucion requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Comunitaria">4.1.3 Comunitaria</mat-label>
+            <mat-select  formControlName="comunitaria">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="comunitaria.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <br>4.2 Privada<br><br>
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Privada">4.2 Privada</mat-label>
+            <mat-select  formControlName="privada">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="privada.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle> 
+        <mat-expansion-panel-header>
+          <mat-panel-title>5. Áreas y niveles de organización curricular</mat-panel-title>
+          <mat-panel-description>Ex. Pública<mat-icon>map</mat-icon></mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <br>5.1 Educación formal<br><br>
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="EdFormal">5.1 Educación formal</mat-label>
+            <mat-select  formControlName="edFormal">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="edFormal.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="EdInicial">5.1.1 Educación inicial</mat-label>
+            <mat-select  formControlName="edInicial">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="edInicial.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="EdPrimaria">5.1.2 Educación Primaria</mat-label>
+            <mat-select  formControlName="edPrimaria">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="edPrimaria.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="EdSecundaria">5.1.3 Eduación secundaria</mat-label>
+            <mat-select  formControlName="edSecundaria">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="edSecundaria.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <br>5.2 Educación alternativa<br><br>
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="EdAlternativa">5.2 Educación alternativa</mat-label>
+            <mat-select  formControlName="edAlternativa">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="edAlternativa.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="EdAdultos">5.2.1 Educación de adultos</mat-label>
+            <mat-select  formControlName="edAdultos">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="edAdultos.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="EdEspecial">5.2.2 Educación especial</mat-label>
+            <mat-select  formControlName="edEspecial">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="edEspecial.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="EdPermanente">5.2.3 Educación permanente</mat-label>
+            <mat-select  formControlName="edPermanente">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="edPermanente.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <br>5.3 Tipo de bachillerato<br><br>
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Bachillerato">5.3 Tipo de bachillerato</mat-label>
+            <mat-select  formControlName="bachillerato">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="bachillerato.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Humanistico">5.3.1 Humanístico</mat-label>
+            <mat-select  formControlName="humanistico">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="humanistico.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Tecnico">5.3.2 Técnico</mat-label>
+            <mat-select  formControlName="tecnico">
+                <mat-option value="1">Si</mat-option>
+                <mat-option value="0">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="tecnico.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+        <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle> 
+        <mat-expansion-panel-header>
+          <mat-panel-title>Información general</mat-panel-title>
+          <mat-panel-description>Ex. Dirección, Correo<mat-icon>map</mat-icon></mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Siglas">Siglas</mat-label>
+            <input matInput formControlName="siglas" placeholder="Ex. Gonzales">
+        </mat-form-field>
+        <mat-error *ngIf="siglas.invalid && formDir.submitted">Siglas requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Latitud">Latitud</mat-label>
+            <input matInput type="number" formControlName="latitud" placeholder="Ex. -11.2">
+        </mat-form-field>
+        <mat-error *ngIf="latitud.invalid && formDir.submitted">Latitud requerida.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Longitud">Longitud</mat-label>
+            <input matInput type="number" formControlName="longitud" placeholder="Ex. -12.3">
+        </mat-form-field>
+        <mat-error *ngIf="longitud.invalid && formDir.submitted">Longitud requerida.</mat-error>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label  for="Correo">Email</mat-label>
+            <input type="email" matInput formControlName="correo" placeholder="Ex. pat@example.com">
+            <mat-error *ngIf="correo.hasError('email') && !correo.hasError('required')">Por favor ingrese un email válido</mat-error>
+            <mat-error *ngIf="correo.invalid && formDir.submitted">Email del profesor requerido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label  for="Telefono1">Telefono</mat-label>
+            <span matPrefix>+466 &nbsp;</span>
+            <input type="tel" matInput  formControlName="telefono1" placeholder="52733">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+        <mat-error *ngIf="telefono1.invalid && formDir.submitted">Telefono del estudiante requerido.</mat-error>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label  for="Telefono2">Telefono</mat-label>
+            <span matPrefix>+466 &nbsp;</span>
+            <input type="tel" matInput  formControlName="telefono2" placeholder="52733">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+        <mat-error *ngIf="telefono2.invalid && formDir.submitted">Telefono del estudiante requerido.</mat-error>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label  for="Celular2">Celular</mat-label>
+            <span matPrefix>+591 &nbsp;</span>
+            <input type="tel" matInput  formControlName="celular2" placeholder="78704214">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+        <mat-error *ngIf="celular2.invalid && formDir.submitted">Celular del estudiante requerido.</mat-error>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label  for="Celular1">Celular</mat-label>
+            <span matPrefix>+591 &nbsp;</span>
+            <input type="tel" matInput  formControlName="celular1" placeholder="78704214">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+        <mat-error *ngIf="celular1.invalid && formDir.submitted">Celular del estudiante requerido.</mat-error>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Web">Dirección Web</mat-label>
+            <input matInput formControlName="web" placeholder="Ex. www.terceraOrden.com">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Descripcion">Descripcion</mat-label>
+            <input matInput formControlName="descripcion">
+        </mat-form-field>
+
+        <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6)" hideToggle> 
+        <mat-expansion-panel-header>
+          <mat-panel-title>Lugar y fecha de recepción</mat-panel-title>
+          <mat-panel-description>Ex. Lugar, Fecha<mat-icon>map</mat-icon></mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="LugarRecepcion">Lugar</mat-label>
+            <input matInput formControlName="lugarRecepcion" placeholder="Ex. 78704552">
+        </mat-form-field>
+        <mat-error *ngIf="lugarRecepcion.invalid && formDir.submitted">Telefono requerido.</mat-error>
+
+        <mat-form-field  appearance="fill">
+            <mat-label for="FechaRecepcion">Fecha</mat-label>
+                    <input matInput [matDatepicker]="picker3" formControlName="fechaRecepcion" (focus)="picker3.open()" readonly>
+            </mat-form-field>
+        <mat-datepicker #picker3></mat-datepicker>
+
+        <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">End</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <br><br>
+    <mat-card-actions> 
+        <button mat-button type="submit" (click)="save()" class="btn btn-success float-right">Guardar</button>
+        <button mat-button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </mat-card-actions>
+
+</mat-accordion>
+
+</form>

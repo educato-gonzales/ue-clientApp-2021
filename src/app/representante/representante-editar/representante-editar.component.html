@@ -1,0 +1,128 @@
+<br><br>
+<form [formGroup]="form" #formDir="ngForm" novalidate>
+
+<mat-form-field appearance="outline">
+  <mat-label for="buscar">Ingrese Cedula de Identidad</mat-label>
+  <input matInput  formControlName="buscar" placeholder="CI">
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field> 
+<mat-card-actions> 
+  <button mat-button (click)="buscarId(buscar.value)" >Buscar</button>
+  <button mat-button (click)="editar()" *ngIf="id.value">Editar</button>
+  <button mat-button (click)="delete(id.value)" *ngIf="id.value">Eliminar</button>
+</mat-card-actions>
+
+<mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" [formGroup]="form"  #formDir="ngForm" hideToggle>
+       
+        <mat-expansion-panel-header>
+        <mat-panel-title>DATOS DE LA O EL REPRESENTANTE</mat-panel-title>
+        <mat-panel-description>Ex. Apellidos, Nombres, Fecha de nacimiento<mat-icon>account_circle</mat-icon></mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+        <mat-label for="Id">ID</mat-label>
+            <input matInput formControlName="id">
+        </mat-form-field>    
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="CedulaIdentidad">Cedula de Identidad</mat-label>
+                <input matInput formControlName="cedulaIdentidad" placeholder="Ex. 10664536">
+            </mat-form-field>
+            <mat-error *ngIf="cedulaIdentidad.invalid && formDir.submitted">Cedula Identidad del representante requerido.</mat-error>
+        
+            <mat-form-field class="example-full-width"  appearance="fill">
+              <mat-label for="Complemento">Complemento</mat-label>
+                  <input matInput formControlName="complemento" placeholder="1A">
+              </mat-form-field>
+              <mat-error *ngIf="complemento.invalid && formDir.submitted">Complemento del representante requerido.</mat-error>
+               
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="Expedido">Expedido</mat-label>
+                <input matInput formControlName="expedido" placeholder="Ex. Tj">
+            </mat-form-field>
+            <mat-error *ngIf="expedido.invalid && formDir.submitted">Expedido del representante requerido.</mat-error>
+      
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="ApPaterno">Apellido Paterno</mat-label>
+                <input matInput formControlName="apPaterno" placeholder="Ex. Gonzales">
+            </mat-form-field>
+            <mat-error *ngIf="apPaterno.invalid && formDir.submitted">Apellido Paterno del representante requerido.</mat-error>
+        
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="ApMaterno">Apellido Materno</mat-label>
+                <input matInput formControlName="apMaterno" placeholder="Ex. Figueroa">
+            </mat-form-field>
+            <mat-error *ngIf="apMaterno.invalid && formDir.submitted">Apellido Materno del representante requerido.</mat-error>
+             
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="Nombres">Nombres</mat-label>
+                <input matInput formControlName="nombres" placeholder="Ex. Claudia Jerissa">
+            </mat-form-field>
+            <mat-error *ngIf="nombres.invalid && formDir.submitted">Nombres del representante requerido.</mat-error>   
+      
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="IdiomaFrecuente">Idioma Frecuente</mat-label>
+                <input matInput formControlName="idiomaFrecuente" placeholder="Ex. Español">
+            </mat-form-field>
+            <mat-error *ngIf="idiomaFrecuente.invalid && formDir.submitted">Idioma Frecuente del representante requerido.</mat-error>
+        
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="OcupacionLaboral">Ocupacion Laboral</mat-label>
+                <input matInput formControlName="ocupacionLaboral" placeholder="Ex. Secretaria">
+            </mat-form-field>
+            <mat-error *ngIf="ocupacionLaboral.invalid && formDir.submitted">Ocupacion Laboral del representante requerido.</mat-error>
+            
+            <mat-form-field appearance="fill">
+              <mat-label>Grado de Instruccion</mat-label>
+              <mat-select  formControlName="gradoInstruccion">
+                  <mat-option value="Primarios">Primaria o menos</mat-option>
+                  <mat-option value="Secundarios">Secundaria</mat-option>
+                  <mat-option value="Profesionales">Profesional</mat-option>
+                  <mat-option value="Universitarios">Universitaria(o) o Superior</mat-option>
+                </mat-select>
+              <span class="text-danger ml-3" *ngIf="gradoInstruccion.invalid && formDir.submitted">Grado de Instruccion del representante requerido</span>
+              </mat-form-field>
+      
+            <mat-form-field appearance="fill">
+              <mat-label>Parentesco</mat-label>
+              <mat-select  formControlName="parentesco">
+                  <mat-option value="Padre">Padre</mat-option>
+                  <mat-option value="Madre">Madre</mat-option>
+                  <mat-option value="Tutor">Tutor</mat-option>
+                </mat-select>
+              <span class="text-danger ml-3" *ngIf="parentesco.invalid && formDir.submitted">Parentesco del representante requerido</span>
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label  for="Telefono">Telefono</mat-label>
+                <span matPrefix>+466 &nbsp;</span>
+                <input type="tel" matInput  formControlName="telefono" placeholder="52733">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field>
+              <mat-error *ngIf="telefono.invalid && formDir.submitted">Telefono requerido.</mat-error>
+        
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label  for="Celular">Celular</mat-label>
+                <span matPrefix>+591 &nbsp;</span>
+                <input type="tel" matInput  formControlName="celular" placeholder="78704214">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field>
+              <mat-error *ngIf="celular.invalid && formDir.submitted">Celular requerido.</mat-error>
+            
+            <mat-form-field appearance="fill">
+              <mat-label for="FechaNacimiento">Fecha de Nacimiento</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento" (focus)="picker.open()" readonly>
+              </mat-form-field>
+            <mat-datepicker #picker></mat-datepicker>
+
+    </mat-expansion-panel>
+
+    <br><br>
+  </mat-accordion>
+
+<mat-card-actions>
+  <button mat-button class="btn btn-success float-right" routerLinkActive="active" routerLink="/inicioRepresentante">ATRAS</button>
+</mat-card-actions><br><br>
+
+</form>

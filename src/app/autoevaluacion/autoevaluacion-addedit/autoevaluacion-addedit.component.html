@@ -1,0 +1,40 @@
+<h1>{{actionType}} Autoevaluacion</h1>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="NotaSer">Nota ser:</label>
+        <div class="col-md-12">
+            <input type="number" class="form-control" formControlName="notaSer">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="notaSer.invalid && formDir.submitted">
+            Nota ser de la Autoevaluacion es requerida.
+        </span>
+    </div>
+
+    
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="NotaDecidir">Nota decidir:</label>
+        <div class="col-md-12">
+            <input type="number" class="form-control" formControlName="notaDecidir">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="notaDecidir.invalid && formDir.submitted">
+            Nota decidir de la Autoevaluacion es requerida.
+        </span>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Id evaluación poseedora:</label>
+        <select class="form-control"  formControlName="idEvalPoseedor">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelect">{{ obj.descripcion }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idEvalPoseedor.invalid && formDir.submitted">Id evaluación poseedora requerido</span>
+    </div>
+
+
+    <br><br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success float-right">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </div>
+</form>

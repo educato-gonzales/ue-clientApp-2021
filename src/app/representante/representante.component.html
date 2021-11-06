@@ -1,0 +1,17 @@
+<ng-container *ngIf="(representante | async) as representante; else loading">
+    
+    <h1>{{ representante.cedulaIdentidad }}</h1>
+    <div>{{ representante.complemento }}</div>
+    <div>{{ representante.expedido }}</div>
+    <div>{{ representante.apPaterno }}</div>
+    <div>{{ representante.apMaterno }}</div>
+    <div>{{ representante.nombres }}</div>
+    <div>{{ representante.ocupacionLaboral }}</div>
+    <div>{{ representante.gradoInstruccion }}</div>
+    <div>{{ representante.fechaNacimiento }}</div>
+    <div>{{ representante.parentesco }}</div>
+    <div>{{ representante.telefono }}</div>
+    <div>{{ representante.celular }}</div>
+
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

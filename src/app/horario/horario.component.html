@@ -1,0 +1,12 @@
+<ng-container *ngIf="(horario | async) as horario; else loading">
+
+    <!--<h1>{{ horario.nombre }}</h1>
+    <div>{{ horario.descripcion }}</div>-->
+    <ul>
+        <li>{{ horario.dia }}</li>
+        <li>{{ horario.horaInicio }}</li>
+        <li>{{ horario.horaFin }}</li>
+    </ul>
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>
+

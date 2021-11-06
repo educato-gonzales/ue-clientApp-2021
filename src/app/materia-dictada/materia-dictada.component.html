@@ -1,0 +1,11 @@
+<ng-container *ngIf="(materiaDictada | async) as materiaDictada; else loading">
+
+    <h1>{{ materiaDictada.descripcion }}</h1>
+    <div>{{ materiaDictada.idMateria }}</div>
+    <div>{{ materiaDictada.idCurso }}</div>
+    <div>{{ materiaDictada.idProfesor }}</div>
+    <div>{{ materiaDictada.idHorario }}</div>
+    <div>{{ materiaDictada.idPeriodo }}</div>
+    
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

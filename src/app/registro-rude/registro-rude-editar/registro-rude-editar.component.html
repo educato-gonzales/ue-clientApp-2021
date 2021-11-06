@@ -1,0 +1,976 @@
+<br> <br>
+<form  [formGroup]="form"  #formDir="ngForm" novalidate>
+
+    <mat-form-field appearance="outline">
+        <mat-label for="Buscar">Ingrese Cedula de Identidad</mat-label>
+        <input matInput formControlName="buscar" placeholder="CI">
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field> 
+    <mat-card-actions> 
+        <button mat-button (click)="buscarId(buscar.value)" >Buscar</button>
+        <button mat-button (click)="editar()" *ngIf="id.value">Editar</button>
+        <button mat-button (click)="delete(id.value)" *ngIf="id.value">Eliminar</button>
+        <!-- <button mat-button (click)=delete(id) >Eliminar</button> -->
+    </mat-card-actions>
+
+        <mat-accordion class="example-headers-align">
+
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" [formGroup]="form"  #formDir="ngForm" hideToggle>
+            
+                <mat-expansion-panel-header>
+
+                <mat-panel-title>I. DATOS DE LA UNIDAD EDUCATIVA</mat-panel-title>
+                <mat-panel-description>Ex. Codigo SIEUE<mat-icon>account_circle</mat-icon></mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field class="example-full-width"  appearance="fill">
+                  <mat-label for="Id">ID</mat-label>
+                      <input matInput formControlName="id" placeholder="Ex. Gonzales">
+                  </mat-form-field>
+              <mat-error *ngIf="id.invalid && formDir.submitted">ID</mat-error>
+              
+                <mat-form-field class="example-full-width"  appearance="fill">
+                    <mat-label for="CodSieue">Codigo SIEUE</mat-label>
+                        <input matInput formControlName="codSieue" placeholder="Ex. Gonzales">
+                    </mat-form-field>
+                <mat-error *ngIf="codSieue.invalid && formDir.submitted">Codigo SIEUE del RUDE requerido.</mat-error>
+                
+                <!-- #docregion action-bar -->
+                <mat-action-row>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+                <!-- #enddocregion action-bar -->
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" [formGroup]="form"  #formDir="ngForm" hideToggle>
+            
+                <mat-expansion-panel-header>
+                <mat-panel-title>II. DATOS DE LA O EL RUDE</mat-panel-title>
+                <mat-panel-description>Ex. Apellidos, Nombres, Fecha de nacimiento<mat-icon>account_circle</mat-icon></mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <br><sub>2.1 APELLIDO(S) Y NOMBRE(S)</sub><br><br>
+
+                <mat-form-field class="example-full-width"  appearance="fill"> 
+                  <mat-label for="ApPaterno">Apellido paterno </mat-label>
+                      <input matInput formControlName="apPaterno" placeholder="Ex. Gonzales">
+                  </mat-form-field>
+               <mat-error *ngIf="apPaterno.invalid && formDir.submitted">Apellido Paterno del RUDE requerido.</mat-error>
+
+               <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="ApMaterno">Apellido Materno</mat-label>
+                    <input matInput formControlName="apMaterno" placeholder="Ex. Figueroa">
+                </mat-form-field>
+                <mat-error *ngIf="apMaterno.invalid && formDir.submitted">Apellido Materno del estudiante requerido.</mat-error>
+                 
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="Nombres">Nombres</mat-label>
+                    <input matInput formControlName="nombres" placeholder="Ex. Claudia Jerissa">
+                </mat-form-field>
+                <mat-error *ngIf="nombres.invalid && formDir.submitted">Nombres del estudiante requerido.</mat-error> 
+
+                <br><sub>2.2 LUGAR DE NACIMIENTO</sub><br><br>
+
+                <mat-form-field class="example-full-width"  appearance="fill">
+                    <mat-label for="Pais">Pais</mat-label>
+                        <input matInput formControlName="pais" placeholder="Ex. Bolivia">
+                    </mat-form-field>
+                    <mat-error *ngIf="pais.invalid && formDir.submitted">Pais del RUDE requerido.</mat-error>
+    
+                    <mat-form-field class="example-full-width"  appearance="fill">
+                    <mat-label for="Departamento">Departamento</mat-label>
+                        <input matInput formControlName="departamento" placeholder="Ex. Bolivia">
+                    </mat-form-field>
+                    <mat-error *ngIf="departamento.invalid && formDir.submitted">Departamento del RUDE requerido.</mat-error>
+    
+                    <mat-form-field class="example-full-width"  appearance="fill">
+                    <mat-label for="Provincia">Provincia</mat-label>
+                        <input matInput formControlName="provincia" placeholder="Ex. Bolivia">
+                    </mat-form-field>
+                    <mat-error *ngIf="provincia.invalid && formDir.submitted">Provincia del RUDE requerido.</mat-error>
+    
+                    <mat-form-field class="example-full-width"  appearance="fill">
+                    <mat-label for="Localidad">Localidad</mat-label>
+                        <input matInput formControlName="localidad" placeholder="Ex. Bolivia">
+                    </mat-form-field>
+                    <mat-error *ngIf="localidad.invalid && formDir.submitted">Localidad del RUDE requerido.</mat-error>
+    
+                    <br><sub>2.3 CERTIFICADO DE NACIMIENTO</sub><br><br>
+                    
+                    <mat-form-field class="example-full-width"  appearance="fill">
+                        <mat-label for="Oficialia">Oficialia</mat-label>
+                            <input matInput formControlName="oficialia" placeholder="Ex. Bolivia">
+                        </mat-form-field>
+                    <mat-error *ngIf="oficialia.invalid && formDir.submitted">Oficialia del RUDE requerido.</mat-error>
+        
+                        <mat-form-field class="example-full-width"  appearance="fill">
+                        <mat-label for="Libro">Libro</mat-label>
+                            <input matInput formControlName="libro" type="number" placeholder="Ex. Bolivia">
+                        </mat-form-field>
+                        <mat-error *ngIf="libro.invalid && formDir.submitted">Libro del RUDE requerido.</mat-error>
+        
+                        <mat-form-field class="example-full-width"  appearance="fill">
+                        <mat-label for="Partida">Partida</mat-label>
+                            <input matInput formControlName="partida" type="number" placeholder="Ex. Bolivia">
+                        </mat-form-field>
+                        <mat-error *ngIf="partida.invalid && formDir.submitted">Partida del RUDE requerido.</mat-error>
+        
+                        <mat-form-field class="example-full-width"  appearance="fill">
+                        <mat-label for="Folio">Folio</mat-label>
+                            <input matInput formControlName="folio" type="number" placeholder="Ex. Bolivia">
+                        </mat-form-field>
+                        <mat-error *ngIf="folio.invalid && formDir.submitted">Folio del RUDE requerido.</mat-error>
+                  
+                        <br><sub>2.4 FECHA DE NACIMIENTO</sub><br><br>
+
+                        <mat-form-field  appearance="fill">
+                          <mat-label for="FechaNacimiento">Fecha de Nacimiento</mat-label>
+                          <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento" (focus)="picker.open()" readonly>
+                      </mat-form-field>
+                      <mat-datepicker #picker></mat-datepicker>
+        
+                 <br><sub>2.5 DOCUMENTO DE IDENTIFICACIÓN</sub><br><br>
+
+                <mat-form-field class="example-full-width"  appearance="fill">
+                    <mat-label for="CedulaIdentidad">Carnet de Identidad</mat-label>
+                        <input matInput formControlName="cedulaIdentidad" placeholder="Ex. 10664536">
+                </mat-form-field>
+                <mat-error *ngIf="cedulaIdentidad.invalid && formDir.submitted">Carnet de Identidad del estudiante requerido.</mat-error>
+
+                 <mat-form-field class="example-full-width"  appearance="fill"> 
+                 <mat-label for="Complemento">Complemento</mat-label>
+                     <input matInput formControlName="complemento" placeholder="Ex. 10664536">
+                 </mat-form-field>
+                 <mat-error *ngIf="complemento.invalid && formDir.submitted">Complemento del RUDE requerido.</mat-error>
+ 
+                 <mat-form-field class="example-full-width"  appearance="fill"> 
+                 <mat-label for="Expedido">Expedido</mat-label>
+                     <input matInput formControlName="expedido" placeholder="Ex. 10664536">
+                 </mat-form-field>
+                 <mat-error *ngIf="expedido.invalid && formDir.submitted">Expedido del RUDE requerido.</mat-error>
+ 
+                 <br><sub>2.6 CÓDIGO RUDE</sub><br><br>
+ 
+                 <mat-form-field class="example-full-width"  appearance="fill"> 
+                 <mat-label for="CodRude">CodRude</mat-label>
+                     <input matInput formControlName="codRude" placeholder="Ex. 10664536">
+                 </mat-form-field>
+                 <mat-error *ngIf="codRude.invalid && formDir.submitted">CodRude del RUDE requerido.</mat-error>
+ 
+                 <br><sub>2.7 SEXO</sub><br><br>
+                 
+                 <mat-form-field appearance="fill">
+                  <mat-select  formControlName="sexo">
+                      <mat-option value="1">Masculino</mat-option>
+                      <mat-option value="0">Femenino</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="sexo.invalid && formDir.submitted">Sexo requerido</span>
+                </mat-form-field>
+ 
+                 <br><sub>2.8 ¿EL/LA ESTUDIANTE PRESENTA ALGUNA DISCAPACIDAD?</sub><br><br>
+ 
+                 <mat-form-field appearance="fill">
+                  <mat-select  formControlName="discapacidad">
+                      <mat-option value="1">Si (Pase a 2.9)</mat-option>
+                      <mat-option value="0">No (Pase a III)</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="sexo.invalid && formDir.submitted">Campo requerido</span>
+                </mat-form-field>
+
+                <br><sub>2.9 Nº DE REGISTRO DE DISCAPACIDAD O IBC</sub><br><br>
+ 
+                 <mat-form-field class="example-full-width"  appearance="fill" *ngIf="discapacidad.value == 1"> 
+                     <input matInput formControlName="numDiscapacidad" type="number" placeholder="Ex. 10664536">
+                 </mat-form-field>
+                 <mat-error *ngIf="numDiscapacidad.invalid && formDir.submitted">Nº de registro de discapacidad o IBC del RUDE requerido.</mat-error>
+ 
+                <br><sub>2.10 TIPO DE DISCAPACIDAD</sub><br><br>
+                <mat-form-field class="example-full-width" appearance="fill" *ngIf="discapacidad.value == 1">
+                <mat-label>Tipo</mat-label>
+                <mat-select formControlName="tipoDiscapacidad">
+                    <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                </mat-select>
+                </mat-form-field>
+
+                <br><sub>2.11 GRADO DE DISCAPACIDAD</sub><br><br>
+                <mat-form-field class="example-full-width" appearance="fill" *ngIf="discapacidad.value == 1">
+                <mat-label>Grado</mat-label>
+                    <mat-select formControlName="gradoDiscapacidad">
+                        <mat-option *ngFor="let state of states1" [value]="state">{{state}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <!-- #docregion action-bar -->
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+                <!-- #enddocregion action-bar -->
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle> 
+                <mat-expansion-panel-header>
+                <mat-panel-title>III. DIRECCIÓN ACTUAL DE LA O EL ESTUDIANTE</mat-panel-title>
+                <mat-panel-description>Información para uso exclusivo de la Unidad Educativa<mat-icon>map</mat-icon></mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field class="example-full-width"  appearance="fill"> 
+                    <mat-label for="DepartamentoEst">Departamento</mat-label>
+                        <input matInput formControlName="departamentoEst" placeholder="Ex. 10664536">
+                    </mat-form-field>
+                    <mat-error *ngIf="departamentoEst.invalid && formDir.submitted">Departamento del RUDE requerido.</mat-error>
+    
+                    <mat-form-field class="example-full-width"  appearance="fill"> 
+                    <mat-label for="ProvinciaEst">Provincia</mat-label>
+                        <input matInput formControlName="provinciaEst" placeholder="Ex. 10664536">
+                    </mat-form-field>
+                    <mat-error *ngIf="provinciaEst.invalid && formDir.submitted">Provincia del RUDE requerido.</mat-error>
+    
+                    <mat-form-field class="example-full-width"  appearance="fill"> 
+                    <mat-label for="SeccionEst">Seccion/Municipio</mat-label>
+                        <input matInput formControlName="seccionEst" placeholder="Ex. 10664536">
+                    </mat-form-field>
+                    <mat-error *ngIf="seccionEst.invalid && formDir.submitted">Seccion/Municipio del RUDE requerido.</mat-error>
+    
+                    <mat-form-field class="example-full-width"  appearance="fill"> 
+                    <mat-label for="LocalidadEst">Localidad/Comunidad</mat-label>
+                        <input matInput formControlName="localidadEst" placeholder="Ex. 10664536">
+                    </mat-form-field>
+                    <mat-error *ngIf="localidadEst.invalid && formDir.submitted">Localidad/Comunidad del RUDE requerido.</mat-error>
+    
+                    <mat-form-field class="example-full-width"  appearance="fill"> 
+                    <mat-label for="ZonaEst">Zona/Villa</mat-label>
+                        <input matInput formControlName="zonaEst" placeholder="Ex. 10664536">
+                    </mat-form-field>
+                    <mat-error *ngIf="zonaEst.invalid && formDir.submitted">Zona/Villa del RUDE requerido.</mat-error>
+    
+                    <mat-form-field class="example-full-width"  appearance="fill"> 
+                    <mat-label for="AvenidaEst">Avenida/Calle</mat-label>
+                        <input matInput formControlName="avenidaEst" placeholder="Ex. 10664536">
+                    </mat-form-field>
+                    <mat-error *ngIf="avenidaEst.invalid && formDir.submitted">Avenida/Calle del RUDE requerido.</mat-error>
+    
+                    <mat-form-field class="example-full-width"  appearance="fill"> 
+                    <mat-label for="NumViviendaEst">Nº Vivienda</mat-label>
+                        <input matInput formControlName="numViviendaEst"  placeholder="Ex. 10664536">
+                    </mat-form-field>
+                    <mat-error *ngIf="numViviendaEst.invalid && formDir.submitted">Nº Vivienda del RUDE requerido.</mat-error>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label  for="Telefono">Telefono</mat-label>
+                      <span matPrefix>+466 &nbsp;</span>
+                      <input type="tel" matInput  formControlName="telefono" placeholder="52733">
+                      <mat-icon matSuffix>mode_edit</mat-icon>
+                    </mat-form-field>
+                    <mat-error *ngIf="telefono.invalid && formDir.submitted">Telefono del estudiante requerido.</mat-error>
+              
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label  for="Celular">Celular</mat-label>
+                      <span matPrefix>+591 &nbsp;</span>
+                      <input type="tel" matInput  formControlName="celular" placeholder="78704214">
+                      <mat-icon matSuffix>mode_edit</mat-icon>
+                    </mat-form-field>
+                    <mat-error *ngIf="celular.invalid && formDir.submitted">Celular del estudiante requerido.</mat-error>
+              
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle> 
+                <mat-expansion-panel-header>
+                <mat-panel-title>IV. ASPECTOS SOCIOECONÓMICOS DE LA O EL ESTUDIANTE</mat-panel-title>
+                <mat-panel-description>Ex. Idioma, salud<mat-icon>map</mat-icon></mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <br><sub>4.1 IDIOMA Y PERTENENCIA CULTURAL DE LA O EL ESTUDIANTE</sub><br><br>
+
+                <br><sub>4.1.1 ¿Cuál es el idioma en el que aprendió a hablar en su niñez?</sub><br>
+                <mat-form-field class="example-full-width"  appearance="fill"> 
+                    <input matInput formControlName="idiomaNiniez" placeholder="Ex. 10664536">
+                </mat-form-field>
+                <mat-error *ngIf="idiomaNiniez.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+                <br><sub>4.1.2 ¿Qué idioma(s) habla frecuentemente?</sub><br>
+                <mat-form-field class="example-full-width"  appearance="fill"> 
+                    <input matInput formControlName="idiomaFrecuente" placeholder="Ex. 10664536">
+                </mat-form-field>
+                <mat-error *ngIf="idiomaFrecuente.invalid && formDir.submitted">Campo requerido.</mat-error>
+
+            
+                <br><sub>4.1.3 ¿Pertenece a una nación, pueblo indígena originario campesino o afroboliviano?</sub><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Tipo</mat-label>
+                  <mat-select formControlName="nacion">
+                    <mat-option *ngFor="let state of states2" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <br><br><br><sub>4.2 SALUD DE LA O EL ESTUDIANTE</sub><br><br>
+
+                <br><sub>4.2.1 ¿Existe algún Centro de Salud/Posta/Hospital en su comunidad/barrio/zona?</sub><br>
+                <mat-form-field appearance="fill">
+                  <mat-select  formControlName="centroSalud">
+                      <mat-option value="1">Si</mat-option>
+                      <mat-option value="0">No</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="centroSalud.invalid && formDir.submitted">Campo requerido</span>
+                </mat-form-field>
+            
+                <br><sub>4.2.2 El año pasado, por problemas de salud, ¿acudió o se atendió en… (</sub><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-select formControlName="problemaSalud">
+                    <mat-option *ngFor="let state of states3" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <br><br><sub>Si respondio las opciones 1, 2 y/o 3 de la pregunta 4.2.2</sub><br>
+                <br><sub>4.2.3 El año pasado, ¿Cuántas veces fue al Centro de Salud?</sub><br><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Tipo</mat-label>
+                  <mat-select formControlName="frecuenciaCs">
+                    <mat-option *ngFor="let state of states4" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+            
+                <br><sub>4.2.4 ¿Tiene seguro de salud?</sub><br><br>
+                <mat-form-field appearance="fill">
+                  <mat-select  formControlName="seguroCs">
+                      <mat-option value="1">Si</mat-option>
+                      <mat-option value="0">No</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="seguroCs.invalid && formDir.submitted">Campo requerido</span>
+                </mat-form-field>
+
+                <br><br><br><sub>4.3 ACCESO DE LA O EL ESTUDIANTE A SERVICIOS BÁSICOS</sub><br><br>
+
+                <br><sub>4.3.1 ¿Tiene acceso a agua por cañería de red?</sub><br>
+                <mat-form-field appearance="fill">
+                  <mat-select  formControlName="agua">
+                      <mat-option value="1">Si</mat-option>
+                      <mat-option value="0">No</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="agua.invalid && formDir.submitted">Campo requerido</span>
+                </mat-form-field>
+
+                <br><sub>4.3.2 ¿Tiene baño en su vivienda?</sub><br>
+                <mat-form-field appearance="fill">
+                  <mat-select  formControlName="agua">
+                      <mat-option value="1">Si</mat-option>
+                      <mat-option value="0">No</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="banio.invalid && formDir.submitted">Campo requerido</span>
+                </mat-form-field>
+
+                <br><sub>4.3.3 ¿Tiene red de alcantarillado?</sub><br>
+                <mat-form-field appearance="fill">
+                  <mat-select  formControlName="alcantarillado">
+                      <mat-option value="1">Si</mat-option>
+                      <mat-option value="0">No</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="alcantarillado.invalid && formDir.submitted">Campo requerido</span>
+                </mat-form-field>
+
+                <br><sub>4.3.4 ¿Usa energía eléctrica para alumbrar su vivienda?</sub><br>
+                <mat-form-field appearance="fill">
+                  <mat-select  formControlName="energiaElectrica">
+                      <mat-option value="1">Si</mat-option>
+                      <mat-option value="0">No</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="energiaElectrica.invalid && formDir.submitted">Campo requerido</span>
+                </mat-form-field>
+
+                <br><sub>4.3.5 ¿Cuenta con servicio de recojo de basura?</sub><br>
+                <mat-form-field appearance="fill">
+                  <mat-select  formControlName="servBasura">
+                      <mat-option value="1">Si</mat-option>
+                      <mat-option value="0">No</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="servBasura.invalid && formDir.submitted">Campo requerido</span>
+                </mat-form-field>
+
+                <br><sub>4.3.6 La vivienda que ocupa el hogar es:</sub><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-select formControlName="vivienda">
+                    <mat-option *ngFor="let state of states5" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <br><br><br><sub>4.4 ACCESO A INTERNET DE LA O EL ESTUDIANTE</sub><br><br>
+                <br><sub>4.4.1 El estudiante accede a internet en:</sub><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-select formControlName="internet">
+                    <mat-option *ngFor="let state of states6" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <br><sub>4.4.2 ¿Con qué frecuencia usa internet?</sub><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-select formControlName="frecuenciaInternet">
+                    <mat-option *ngFor="let state of states7" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <br><br><br><sub>4.5 ACTIVIDAD LABORAL DE LA O EL ESTUDIANTE</sub><br><br>
+
+                <br><sub>4.5.1 En la pasada gestión ¿El estudiante trabajó?</sub><br>
+                <mat-form-field appearance="fill">
+                  <mat-select  formControlName="trabajo">
+                      <mat-option value="1">Si</mat-option>
+                      <mat-option value="0">No</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="trabajo.invalid && formDir.submitted">Campo requerido</span>
+                </mat-form-field>
+
+                <br><sub>Meses de trabajo</sub><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-select formControlName="mesesTrabajo">
+                    <mat-option *ngFor="let state of states14" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <br><sub>4.5.2 En la pasada gestión ¿En qué actividad trabajó el estudiante?</sub><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-select formControlName="actividadTrabajo">
+                    <mat-option *ngFor="let state of states8" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <br><sub>4.5.3 ¿En qué turno trabajó el estudiante?</sub><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-select formControlName="turnoTrabajo">
+                    <mat-option *ngFor="let state of states9" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <br><sub>4.5.4 ¿Con qué frecuencia trabajó?</sub><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-select formControlName="frecuenciaTrabajo">
+                    <mat-option *ngFor="let state of states10" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+            
+                <br><sub>4.5.5 ¿Recibió algún pago?</sub><br>
+                <mat-form-field appearance="fill">
+                  <mat-select  formControlName="pagoTrabajo">
+                      <mat-option value="1">Si</mat-option>
+                      <mat-option value="0">No</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="pagoTrabajo.invalid && formDir.submitted">Campo requerido</span>
+                </mat-form-field>
+
+                <br><sub>Tipo de pago</sub><br>
+                <mat-form-field appearance="fill">
+                  <mat-select  formControlName="tipoPago">
+                      <mat-option value="1">En especie</mat-option>
+                      <mat-option value="0">Dinero</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="tipoPago.invalid && formDir.submitted">Campo requerido</span>
+                </mat-form-field>
+
+                <br><br><br><sub>4.6 MEDIO DE TRANSPORTE PARA LLEGAR A LA UNIDAD EDUCATIVA</sub><br><br>
+
+                <br><sub>4.6.1 Generalmente, ¿Cómo llega el estudiante a la Unidad Educativa?</sub><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-select formControlName="medioTransporte">
+                    <mat-option *ngFor="let state of states11" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                 
+                <br><sub>4.6.2 Según el medio de transporte señalado, ¿Cuál es el tiempo máximo que demora el estudiante desde su vivienda hasta la Unidad Educativa?</sub><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-select formControlName="tiempoTransporte">
+                    <mat-option *ngFor="let state of states12" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+               <br><br><br><sub>4.7 ABANDONO ESCOLAR CORRESPONDIENTE A LA GESTIÓN ANTERIOR</sub><br><br>
+                <br><sub>4.7.1 ¿El estudiante abandonó la Unidad Educativa el año pasado?</sub><br>
+                <mat-form-field appearance="fill">
+                  <mat-select  formControlName="abandonoUe">
+                      <mat-option value="1">Si</mat-option>
+                      <mat-option value="0">No</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="abandonoUe.invalid && formDir.submitted">Campo requerido</span>
+                </mat-form-field>
+
+                <br><sub>4.7.2 ¿Cuál o cuáles fueron las razones de abandono escolar?</sub><br>
+                <mat-form-field class="example-full-width" appearance="fill" *ngIf="abandonoUe.value == 1">
+                  <mat-select formControlName="razonAbandono">
+                    <mat-option *ngFor="let state of states13" [value]="state">{{state}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" [formGroup]="form"  #formDir="ngForm" hideToggle>
+            
+              <mat-expansion-panel-header>
+
+              <mat-panel-title>V. DATOS DEL PADRE, MADRE O TUTOR (A) DE LA O EL ESTUDIANTE</mat-panel-title>
+              <mat-panel-description>Ex. Cedula de identidad, nombres<mat-icon>account_circle</mat-icon></mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="CedulaIdentidad">Cedula de Identidad</mat-label>
+                    <input matInput formControlName="cedulaIdentidad" placeholder="Ex. 10664536">
+                </mat-form-field>
+                <mat-error *ngIf="cedulaIdentidad.invalid && formDir.submitted">Cedula Identidad del profesor requerido.</mat-error>
+            
+                <mat-form-field class="example-full-width"  appearance="fill">
+                  <mat-label for="Complemento">Complemento</mat-label>
+                      <input matInput formControlName="complemento" placeholder="Ex. 10664536">
+                  </mat-form-field>
+                  <mat-error *ngIf="complemento.invalid && formDir.submitted">Complemento del profesor requerido.</mat-error>
+            
+              <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="ExpedidoP">Expedido</mat-label>
+                    <input matInput formControlName="expedidoP" placeholder="Ex. 10664536">
+                </mat-form-field>
+                <mat-error *ngIf="expedidoP.invalid && formDir.submitted">Expedido del profesor requerido.</mat-error>
+            
+                <br><sub>APELLIDO(S) Y NOMBRE(S)</sub><br><br>
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="ApPaternoP">Apellido Paterno</mat-label>
+                    <input matInput formControlName="apPaternoP" placeholder="Ex. Gonzales">
+                </mat-form-field>
+                <mat-error *ngIf="apPaternoP.invalid && formDir.submitted">Apellido Paterno del profesor requerido.</mat-error>
+            
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="ApMaternoP">Apellido Materno</mat-label>
+                    <input matInput formControlName="apMaternoP" placeholder="Ex. Figueroa">
+                </mat-form-field>
+                <mat-error *ngIf="apMaternoP.invalid && formDir.submitted">Apellido Materno del profesor requerido.</mat-error>
+                 
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="NombresP">Nombres</mat-label>
+                    <input matInput formControlName="nombresP" placeholder="Ex. Claudia Jerissa">
+                </mat-form-field>
+                <mat-error *ngIf="nombresP.invalid && formDir.submitted">Nombres del profesor requerido.</mat-error>   
+          
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="IdiomaFrecuenteP">Idioma Frecuente</mat-label>
+                    <input matInput formControlName="idiomaFrecuenteP" placeholder="Ex. Gonzales">
+                </mat-form-field>
+                <mat-error *ngIf="idiomaFrecuenteP.invalid && formDir.submitted">Idioma Frecuente del profesor requerido.</mat-error>
+            
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="OcupacionLaboralP">Ocupacion Laboral</mat-label>
+                    <input matInput formControlName="ocupacionLaboralP" placeholder="Ex. Figueroa">
+                </mat-form-field>
+                <mat-error *ngIf="ocupacionLaboralP.invalid && formDir.submitted">Ocupacion Laboral del profesor requerido.</mat-error>
+                 
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="GradoInstruccionP">Grado Instruccion</mat-label>
+                    <input matInput formControlName="gradoInstruccionP" placeholder="Ex. Claudia Jerissa">
+                </mat-form-field>
+                <mat-error *ngIf="gradoInstruccionP.invalid && formDir.submitted">GradoInstruccion del profesor requerido.</mat-error>   
+          
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="ParentescoP">Parentesco</mat-label>
+                    <input matInput formControlName="parentescoP" placeholder="Ex. Claudia Jerissa">
+                </mat-form-field>
+                <mat-error *ngIf="parentescoP.invalid && formDir.submitted">Parentesco del profesor requerido.</mat-error>   
+          
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label  for="Telefono">Telefono</mat-label>
+                  <span matPrefix>+466 &nbsp;</span>
+                  <input type="tel" matInput  formControlName="telefono" placeholder="52733">
+                  <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+                <mat-error *ngIf="telefono.invalid && formDir.submitted">Telefono del estudiante requerido.</mat-error>
+          
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label  for="Celular">Celular</mat-label>
+                  <span matPrefix>+591 &nbsp;</span>
+                  <input type="tel" matInput  formControlName="celular" placeholder="78704214">
+                  <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+                <mat-error *ngIf="celular.invalid && formDir.submitted">Celular del estudiante requerido.</mat-error>
+          
+                <mat-form-field appearance="fill">
+                  <mat-label for="FechaNacimientoP">Fecha de Nacimiento</mat-label>
+                  <input matInput [matDatepicker]="picker2" formControlName="fechaNacimientoP" (focus)="picker2.open()" readonly>
+                </mat-form-field>
+                <mat-datepicker #picker2></mat-datepicker>
+
+                
+              <!-- #docregion action-bar -->
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+              <!-- #enddocregion action-bar -->
+          </mat-expansion-panel>
+
+
+          <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" [formGroup]="form"  #formDir="ngForm" hideToggle>
+            
+            <mat-expansion-panel-header>
+            <mat-panel-title>REPRESENTANTE PADRE</mat-panel-title>
+            <mat-panel-description>Ex. Nombres, Apellidos<mat-icon>account_circle</mat-icon></mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="form-group row">
+                <label class="control-label col-md-12" >Id Representante Padre:</label>
+                <select class="form-control"  style="background-color: rgba(0, 0, 0, 0.04); width: 40%" formControlName="idRepresentantePadre">
+                    <option value="{{ obj.id }}" *ngFor="let obj of listaSelectRepresentante">{{ obj.nombres + " " + obj.apPaterno + " " + obj.apMaterno }}</option>
+                </select>
+                <span class="text-danger ml-3" *ngIf="idRepresentantePadre.invalid && formDir.submitted">Id Representante Padre requerido</span>
+            </div>
+
+            <mat-form-field class="example-full-width"  appearance="fill">
+              <mat-label for="CedulaIdentidadP">Cedula de Identidad</mat-label>
+                  <input matInput formControlName="cedulaIdentidadP" placeholder="Ex. 10664536">
+              </mat-form-field>
+              <mat-error *ngIf="cedulaIdentidadP.invalid && formDir.submitted">Cedula Identidad del profesor requerido.</mat-error>
+
+              <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="ComplementoP">Complemento</mat-label>
+                  <input matInput formControlName="complementoP" placeholder="Ex. 1A">
+                </mat-form-field>
+                <mat-error *ngIf="complementoP.invalid && formDir.submitted">Complemento del profesor requerido.</mat-error>
+            
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="ExpedidoP">Expedido</mat-label>
+                    <input matInput formControlName="expedidoP" placeholder="Ex. Tj">
+                </mat-form-field>
+                <mat-error *ngIf="expedidoP.invalid && formDir.submitted">Expedido del profesor requerido.</mat-error>
+            
+                <br><sub>APELLIDO(S) Y NOMBRE(S)</sub><br><br>
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="ApPaternoP">Apellido Paterno</mat-label>
+                    <input matInput formControlName="apPaternoP" placeholder="Ex. Gonzales">
+                </mat-form-field>
+                <mat-error *ngIf="apPaternoP.invalid && formDir.submitted">Apellido Paterno del profesor requerido.</mat-error>
+            
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="ApMaternoP">Apellido Materno</mat-label>
+                    <input matInput formControlName="apMaternoP" placeholder="Ex. Figueroa">
+                </mat-form-field>
+                <mat-error *ngIf="apMaternoP.invalid && formDir.submitted">Apellido Materno del profesor requerido.</mat-error>
+                 
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="NombresP">Nombres</mat-label>
+                    <input matInput formControlName="nombresP" placeholder="Ex. Claudia Jerissa">
+                </mat-form-field>
+                <mat-error *ngIf="nombresP.invalid && formDir.submitted">Nombres del profesor requerido.</mat-error>   
+          
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="IdiomaFrecuenteP">Idioma Frecuente</mat-label>
+                    <input matInput formControlName="idiomaFrecuenteP" placeholder="Ex. Español">
+                </mat-form-field>
+                <mat-error *ngIf="idiomaFrecuenteP.invalid && formDir.submitted">Idioma Frecuente del profesor requerido.</mat-error>
+            
+                <mat-form-field class="example-full-width"  appearance="fill">
+                <mat-label for="OcupacionLaboralP">Ocupacion Laboral</mat-label>
+                    <input matInput formControlName="ocupacionLaboralP" placeholder="Ex. Administrador">
+                </mat-form-field>
+                <mat-error *ngIf="ocupacionLaboralP.invalid && formDir.submitted">Ocupacion Laboral del profesor requerido.</mat-error>
+                 
+                <mat-form-field appearance="fill">
+                  <mat-label>Grado de Instruccion</mat-label>
+                  <mat-select  formControlName="gradoInstruccionP">
+                      <mat-option value="primarios">Primaria o menos</mat-option>
+                      <mat-option value="secundarios">Secundaria</mat-option>
+                      <mat-option value="profesionales">Profesional</mat-option>
+                      <mat-option value="universitarios">Universitaria(o) o Superior</mat-option>
+                    </mat-select>
+                  <span class="text-danger ml-3" *ngIf="gradoInstruccionP.invalid && formDir.submitted">Grado de Instruccion del representante requerido</span>
+                  </mat-form-field>
+          
+                <mat-form-field appearance="fill">
+                  <mat-label for="ParentescoP">Padre</mat-label>
+                  <mat-select  formControlName="parentescoP"></mat-select>
+                </mat-form-field>
+          
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label  for="Telefono">Telefono</mat-label>
+                  <span matPrefix>+466 &nbsp;</span>
+                  <input type="tel" matInput  formControlName="telefono" placeholder="52733">
+                  <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+                <mat-error *ngIf="telefono.invalid && formDir.submitted">Telefono del estudiante requerido.</mat-error>
+          
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label  for="Celular">Celular</mat-label>
+                  <span matPrefix>+591 &nbsp;</span>
+                  <input type="tel" matInput  formControlName="celular" placeholder="78704214">
+                  <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+                <mat-error *ngIf="celular.invalid && formDir.submitted">Celular del estudiante requerido.</mat-error>
+          
+                <mat-form-field appearance="fill">
+                  <mat-label for="FechaNacimientoP">Fecha de Nacimiento</mat-label>
+                  <input matInput [matDatepicker]="picker3" formControlName="fechaNacimientoP" (focus)="picker3.open()" readonly>
+                </mat-form-field>
+                <mat-datepicker #picker3></mat-datepicker>             
+              
+            <mat-action-row>
+              <button mat-button color="warn" (click)="prevStep()">Previous</button>
+              <button mat-button color="primary" (click)="nextStep()">Next</button>
+            </mat-action-row>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6)" [formGroup]="form"  #formDir="ngForm" hideToggle>
+            
+          <mat-expansion-panel-header>
+          <mat-panel-title>REPRESENTANTE MADRE</mat-panel-title>
+          <mat-panel-description>Ex. Nombres, Apellidos<mat-icon>account_circle</mat-icon></mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="form-group row">
+              <label class="control-label col-md-12" >Id Representante Madre:</label>
+              <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04); width: 40%" formControlName="idRepresentanteMadre">
+                  <option value="{{ obj.id }}" *ngFor="let obj of listaSelectRepresentante">{{ obj.nombres + " " + obj.apPaterno + " " + obj.apMaterno }}</option>
+              </select>
+              <span class="text-danger ml-3" *ngIf="idRepresentanteMadre.invalid && formDir.submitted">Id Representante Padre requerido</span>
+          </div>
+
+          <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="CedulaIdentidadM">Cedula de Identidad</mat-label>
+                <input matInput formControlName="cedulaIdentidadM" placeholder="Ex. 10664536">
+            </mat-form-field>
+            <mat-error *ngIf="cedulaIdentidadM.invalid && formDir.submitted">Cedula Identidad del profesor requerido.</mat-error>
+
+            <mat-form-field class="example-full-width"  appearance="fill">
+              <mat-label for="ComplementoM">Complemento</mat-label>
+                <input matInput formControlName="complementoM" placeholder="Ex. 1A">
+              </mat-form-field>
+              <mat-error *ngIf="complementoM.invalid && formDir.submitted">Complemento del profesor requerido.</mat-error>
+          
+              <mat-form-field class="example-full-width"  appearance="fill">
+              <mat-label for="ExpedidoM">Expedido</mat-label>
+                  <input matInput formControlName="expedidoM" placeholder="Ex. Tj">
+              </mat-form-field>
+              <mat-error *ngIf="expedidoM.invalid && formDir.submitted">Expedido del profesor requerido.</mat-error>
+          
+              <br><sub>APELLIDO(S) Y NOMBRE(S)</sub><br><br>
+              <mat-form-field class="example-full-width"  appearance="fill">
+              <mat-label for="ApPaternoM">Apellido Paterno</mat-label>
+                  <input matInput formControlName="apPaternoM" placeholder="Ex. Gonzales">
+              </mat-form-field>
+              <mat-error *ngIf="apPaternoM.invalid && formDir.submitted">Apellido Paterno del profesor requerido.</mat-error>
+          
+              <mat-form-field class="example-full-width"  appearance="fill">
+              <mat-label for="ApMaternoM">Apellido Materno</mat-label>
+                  <input matInput formControlName="apMaternoM" placeholder="Ex. Figueroa">
+              </mat-form-field>
+              <mat-error *ngIf="apMaternoM.invalid && formDir.submitted">Apellido Materno del profesor requerido.</mat-error>
+               
+              <mat-form-field class="example-full-width"  appearance="fill">
+              <mat-label for="NombresM">Nombres</mat-label>
+                  <input matInput formControlName="nombresM" placeholder="Ex. Claudia Jerissa">
+              </mat-form-field>
+              <mat-error *ngIf="nombresM.invalid && formDir.submitted">Nombres del profesor requerido.</mat-error>   
+        
+              <mat-form-field class="example-full-width"  appearance="fill">
+              <mat-label for="IdiomaFrecuenteM">Idioma Frecuente</mat-label>
+                  <input matInput formControlName="idiomaFrecuenteM" placeholder="Ex. Español">
+              </mat-form-field>
+              <mat-error *ngIf="idiomaFrecuenteM.invalid && formDir.submitted">Idioma Frecuente del profesor requerido.</mat-error>
+          
+              <mat-form-field class="example-full-width"  appearance="fill">
+              <mat-label for="OcupacionLaboralM">Ocupacion Laboral</mat-label>
+                  <input matInput formControlName="ocupacionLaboralM" placeholder="Ex. Administrador">
+              </mat-form-field>
+              <mat-error *ngIf="ocupacionLaboralM.invalid && formDir.submitted">Ocupacion Laboral del profesor requerido.</mat-error>
+               
+              <mat-form-field appearance="fill">
+                <mat-label>Grado de Instruccion</mat-label>
+                <mat-select  formControlName="gradoInstruccionM">
+                    <mat-option value="primarios">Primaria o menos</mat-option>
+                    <mat-option value="secundarios">Secundaria</mat-option>
+                    <mat-option value="profesionales">Profesional</mat-option>
+                    <mat-option value="universitarios">Universitaria(o) o Superior</mat-option>
+                  </mat-select>
+                <span class="text-danger ml-3" *ngIf="gradoInstruccionM.invalid && formDir.submitted">Grado de Instruccion del representante requerido</span>
+                </mat-form-field>
+        
+              <mat-form-field appearance="fill">
+                <mat-label for="ParentescoM">Madre</mat-label>
+                <mat-select  formControlName="parentescoM"></mat-select>
+              </mat-form-field>
+        
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label  for="Telefono">Telefono</mat-label>
+                <span matPrefix>+466 &nbsp;</span>
+                <input type="tel" matInput  formControlName="telefono" placeholder="52733">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field>
+              <mat-error *ngIf="telefono.invalid && formDir.submitted">Telefono del estudiante requerido.</mat-error>
+        
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label  for="Celular">Celular</mat-label>
+                <span matPrefix>+591 &nbsp;</span>
+                <input type="tel" matInput  formControlName="celular" placeholder="78704214">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field>
+              <mat-error *ngIf="celular.invalid && formDir.submitted">Celular del estudiante requerido.</mat-error>
+        
+              <mat-form-field appearance="fill">
+                <mat-label for="FechaNacimientoM">Fecha de Nacimiento</mat-label>
+                <input matInput [matDatepicker]="picker4" formControlName="fechaNacimientoM" (focus)="picker4.open()" readonly>
+              </mat-form-field>
+              <mat-datepicker #picker4></mat-datepicker>             
+            
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+          </mat-action-row>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="step === 7" (opened)="setStep(7)" [formGroup]="form"  #formDir="ngForm" hideToggle>
+            
+        <mat-expansion-panel-header>
+        <mat-panel-title>REPRESENTANTE TUTOR</mat-panel-title>
+        <mat-panel-description>Ex. Nombres, Apellidos<mat-icon>account_circle</mat-icon></mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <br><div class="form-group row">
+          <label class="control-label col-md-12" >Id Representante Tutor:</label>
+          <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04); width: 40%"  formControlName="idRepresentanteTutor">
+              <option value="{{ obj.id }}" *ngFor="let obj of listaSelectRepresentante">{{ obj.nombres + " " + obj.apPaterno + " " + obj.apMaterno }}</option>
+          </select>
+          <span class="text-danger ml-3" *ngIf="idRepresentanteTutor.invalid && formDir.submitted">Id Representante Tutor requerido</span>
+      </div>
+
+        <mat-form-field class="example-full-width"  appearance="fill">
+          <mat-label for="CedulaIdentidadT">Cedula de Identidad</mat-label>
+              <input matInput formControlName="cedulaIdentidadT"  placeholder="Ex. 10664536">
+          </mat-form-field>
+          <mat-error *ngIf="cedulaIdentidadT.invalid && formDir.submitted">Cedula Identidad del profesor requerido.</mat-error>
+
+          <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="ComplementoT">Complemento</mat-label>
+              <input matInput formControlName="complementoT" placeholder="Ex. 1A">
+            </mat-form-field>
+            <mat-error *ngIf="complementoT.invalid && formDir.submitted">Complemento del profesor requerido.</mat-error>
+        
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="ExpedidoT">Expedido</mat-label>
+                <input matInput formControlName="expedidoT" placeholder="Ex. Tj">
+            </mat-form-field>
+            <mat-error *ngIf="expedidoT.invalid && formDir.submitted">Expedido del profesor requerido.</mat-error>
+        
+            <br><sub>APELLIDO(S) Y NOMBRE(S)</sub><br><br>
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="ApPaternoT">Apellido Paterno</mat-label>
+                <input matInput formControlName="apPaternoT" placeholder="Ex. Gonzales">
+            </mat-form-field>
+            <mat-error *ngIf="apPaternoT.invalid && formDir.submitted">Apellido Paterno del profesor requerido.</mat-error>
+        
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="ApMaternoT">Apellido Materno</mat-label>
+                <input matInput formControlName="apMaternoT" placeholder="Ex. Figueroa">
+            </mat-form-field>
+            <mat-error *ngIf="apMaternoT.invalid && formDir.submitted">Apellido Materno del profesor requerido.</mat-error>
+             
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="NombresT">Nombres</mat-label>
+                <input matInput formControlName="nombresT" placeholder="Ex. Claudia Jerissa">
+            </mat-form-field>
+            <mat-error *ngIf="nombresT.invalid && formDir.submitted">Nombres del profesor requerido.</mat-error>   
+      
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="IdiomaFrecuenteT">Idioma Frecuente</mat-label>
+                <input matInput formControlName="idiomaFrecuenteT" placeholder="Ex. Español">
+            </mat-form-field>
+            <mat-error *ngIf="idiomaFrecuenteT.invalid && formDir.submitted">Idioma Frecuente del profesor requerido.</mat-error>
+        
+            <mat-form-field class="example-full-width"  appearance="fill">
+            <mat-label for="OcupacionLaboralT">Ocupacion Laboral</mat-label>
+                <input matInput formControlName="ocupacionLaboralT" placeholder="Ex. Administrador">
+            </mat-form-field>
+            <mat-error *ngIf="ocupacionLaboralT.invalid && formDir.submitted">Ocupacion Laboral del profesor requerido.</mat-error>
+             
+            <mat-form-field appearance="fill">
+              <mat-label>Grado de Instruccion</mat-label>
+              <mat-select  formControlName="gradoInstruccionT">
+                  <mat-option value="primarios">Primaria o menos</mat-option>
+                  <mat-option value="secundarios">Secundaria</mat-option>
+                  <mat-option value="profesionales">Profesional</mat-option>
+                  <mat-option value="universitarios">Universitaria(o) o Superior</mat-option>
+                </mat-select>
+              <span class="text-danger ml-3" *ngIf="gradoInstruccionT.invalid && formDir.submitted">Grado de Instruccion del representante requerido</span>
+              </mat-form-field>
+      
+            <mat-form-field appearance="fill">
+              <mat-label for="ParentescoT">Tutor</mat-label>
+              <mat-select  formControlName="parentescoT"></mat-select>
+            </mat-form-field>
+      
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label  for="Telefono">Telefono</mat-label>
+              <span matPrefix>+466 &nbsp;</span>
+              <input type="tel" matInput  formControlName="telefono" placeholder="52733">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+            <mat-error *ngIf="telefono.invalid && formDir.submitted">Telefono del estudiante requerido.</mat-error>
+      
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label  for="Celular">Celular</mat-label>
+              <span matPrefix>+591 &nbsp;</span>
+              <input type="tel" matInput  formControlName="celular" placeholder="78704214">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+            <mat-error *ngIf="celular.invalid && formDir.submitted">Celular del estudiante requerido.</mat-error>
+      
+            <mat-form-field appearance="fill">
+              <mat-label for="FechaNacimientoT">Fecha de Nacimiento</mat-label>
+              <input matInput [matDatepicker]="picker5" formControlName="fechaNacimientoT" (focus)="picker5.open()" readonly>
+            </mat-form-field>
+            <mat-datepicker #picker5></mat-datepicker>             
+          
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+
+    </mat-expansion-panel>
+
+
+            <mat-expansion-panel [expanded]="step === 8" (opened)="setStep(8)" [formGroup]="form"  #formDir="ngForm" hideToggle>
+            
+                <mat-expansion-panel-header>
+                <mat-panel-title>DATOS COMPLEMENTARIOS</mat-panel-title>
+                <mat-panel-description>Ex. Representantes<mat-icon>account_circle</mat-icon></mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field class="example-full-width"  appearance="fill"> 
+                    <mat-label for="LugarRegistro">Lugar de Registro</mat-label>
+                        <input matInput formControlName="lugarRegistro" placeholder="Ex. 10664536">
+                </mat-form-field>
+                <mat-error *ngIf="lugarRegistro.invalid && formDir.submitted">Lugar de Registro del RUDE requerido.</mat-error>
+
+                <mat-form-field  appearance="fill">
+                    <mat-label for="FechaRegistro">Fecha de Registro</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="fechaRegistro" (focus)="picker1.open()" readonly>
+                </mat-form-field>
+                <mat-datepicker #picker1></mat-datepicker>
+
+                <br><div class="form-group row">
+                    <label class="control-label col-md-12" >Estudiante:</label>
+                    <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04); width: 40%" formControlName="idEstudiante">
+                        <option value="{{ obj.id }}" *ngFor="let obj of listaSelectEstudiante">{{ obj.nombres + " " + obj.apPaterno + " " + obj.apMaterno }}</option>
+                    </select>
+                    <span class="text-danger ml-3" *ngIf="idEstudiante.invalid && formDir.submitted">id RUDE requerido</span>
+                </div>
+               
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep()">End</button>
+                </mat-action-row>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+
+       
+</form>

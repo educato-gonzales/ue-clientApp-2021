@@ -1,0 +1,34 @@
+<h1>{{actionType}} ESTUDIANTE CURSO</h1>
+<form class="example-form" [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    
+
+    <table class="example-full-width" cellspacing="0"><tr>
+
+       
+    
+          <div class="form-group col-md-8">
+            <label class="control-label col-md-12" >Estudiante:</label>
+            <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04)"   formControlName="idEstudiante">
+                <option value="{{ obj.id }}" *ngFor="let obj of listaSelectEstudiante">{{ obj.nombres }}</option>
+            </select>
+            <span class="text-danger ml-3" *ngIf="idEstudiante.invalid && formDir.submitted">Estudiante requerido</span>
+          </div>
+
+          <div class="form-group col-md-8">
+            <label class="control-label col-md-12" >Curso:</label>
+            <select class="form-control" style="background-color: rgba(0, 0, 0, 0.04)"   formControlName="idCurso">
+                <option value="{{ obj.id }}" *ngFor="let obj of listaSelectCurso">{{ obj.nombre }}</option>
+            </select>
+            <span class="text-danger ml-3" *ngIf="idCurso.invalid && formDir.submitted">Curso requerido</span>
+          </div>
+
+    </tr></table>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success float-right">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </div>
+    <br><br><br>
+    
+</form>
+

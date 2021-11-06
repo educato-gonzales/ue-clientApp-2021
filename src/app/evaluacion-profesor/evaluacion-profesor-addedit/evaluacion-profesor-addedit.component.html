@@ -1,0 +1,44 @@
+<h1>{{actionType}} Evaluacion Profesor</h1>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="NotaSer">NotaSer:</label>
+        <div class="col-md-12">
+            <input type="number" class="form-control" formControlName="notaSer">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="notaSer.invalid && formDir.submitted">
+            NotaSer de la evaluacion profesor requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="NotaDecidir">NotaDecidir:</label>
+        <div class="col-md-12">
+            <input type="number" class="form-control" formControlName="notaDecidir">
+        </div>
+        <span class="text-danger ml-3 " *ngIf="notaDecidir.invalid && formDir.submitted">
+            NotaDecidir de la evaluacion profesor requerido.
+        </span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Estudiante:</label>
+        <select class="form-control"  formControlName="idEstudiante">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelectEstudiante">{{ obj.nombres }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idEstudiante.invalid && formDir.submitted">Estudiante requerido</span>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" >Id evaluación poseedora:</label>
+        <select class="form-control"  formControlName="idEvalPoseedor">
+            <option value="{{ obj.id }}" *ngFor="let obj of listaSelect">{{ obj.id }}</option>
+        </select>
+        <span class="text-danger ml-3" *ngIf="idEvalPoseedor.invalid && formDir.submitted">Id evaluación poseedora requerido</span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success float-right">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary float-left">Cancelar</button>
+    </div>
+</form>

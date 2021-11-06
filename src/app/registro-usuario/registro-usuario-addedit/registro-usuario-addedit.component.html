@@ -1,0 +1,43 @@
+<div class='box'>
+
+    <div class='box-form'>
+      <div class='box-login-tab'></div>
+      <div class='box-login-title'><div class='i i-login'></div><h2>Usuario</h2></div>
+
+      <div class='box-login'>
+        <div class='fieldset-body' id='login_form'>
+          
+            <form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+                <table class="example-full-width" cellspacing="0"><tr>
+            
+                    <mat-form-field class="example-full-width"  appearance="fill">
+                    <mat-label for="Nombre">Nombre</mat-label>
+                    <input matInput formControlName="nombre" placeholder="Ex. Habilitado">
+                    </mat-form-field>
+                    <mat-error *ngIf="nombre.invalid && formDir.submitted">
+                        Nombre del usuario requerido.
+                    </mat-error>
+                    
+            
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label for="Clave" >Clave</mat-label>
+                      <input matInput type="password" formControlName="clave">
+                    </mat-form-field>
+                    <mat-error *ngIf="clave.invalid && formDir.submitted">
+                        Clave del usuario requerido.
+                    </mat-error>
+            
+                </tr></table>
+                  
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success float-right">Guardar</button>
+                </div><br><br><br>
+                
+            </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>

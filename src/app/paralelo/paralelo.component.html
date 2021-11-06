@@ -1,0 +1,6 @@
+<ng-container *ngIf="(paralelo | async) as paralelo; else loading">
+
+    <h1>{{ paralelo.nombre }}</h1>
+    
+</ng-container>
+<ng-template #loading>Cargando..!</ng-template>

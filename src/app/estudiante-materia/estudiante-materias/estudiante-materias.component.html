@@ -1,0 +1,28 @@
+<h1>Estudiante - Materias</h1>
+<p *ngIf="!estudianteMateriasLista"><em>Cargando..!</em></p>
+<p><a [routerLink]="['/addEstudianteMateria']" class="btn btn-primary float-right mb-3">Nuevo Estudiante Materia</a></p>
+
+<table class="table table-responsive table-hover" *ngIf="(estudianteMateriasLista)?.length>0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Id Materia</th>
+            <th>Id Estudiante</th>
+            <th>Id Horario</th>
+            <th>Id Periodo</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody>
+    <tr *ngFor="let estudianteMateria of estudianteMateriasLista">
+        <td>{{ estudianteMateria.id }}</td>
+        <td><a [routerLink]="['/estudianteMateria/', estudianteMateria.Id]">{{estudianteMateria.idMateria}}</a></td>
+        <td>{{ estudianteMateria.idEstudiante }}</td>
+        <td>{{ estudianteMateria.idHorario }}</td>
+        <td>{{ estudianteMateria.idPeriodo }}</td>
+        <td><a [routerLink]="['/estudianteMateria/edit/', estudianteMateria.id]" class="btn btn-primary btn-sm float-right">Editar</a></td>
+        <td><a [routerLink]="" (click)="delete(estudianteMateria.id)" class="btn btn-danger btn-sm float-right">Eliminar</a></td>
+    </tr>
+</tbody>
+</table> 
